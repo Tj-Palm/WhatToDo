@@ -1,0 +1,3 @@
+C:\Zealand\Semester_3\Examen\WhatToDo\Backend\WhatToDo\RestBackendTest\obj\Debug\netcoreapp3.1\RestBackendTest.csprojAssemblyReference.cache
+C:\Zealand\Semester_3\Examen\WhatToDo\Backend\WhatToDo\RestBackendTest\obj\Debug\netcoreapp3.1\RestBackendTest.AssemblyInfoInputs.cache
+C:\Zealand\Semester_3\Examen\WhatToDo\Backend\WhatToDo\RestBackendTest\obj\Debug\netcoreapp3.1\RestBackendTest.AssemblyInfo.cs

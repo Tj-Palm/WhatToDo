@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Zealand\\Semester_3\\Examen\\WhatToDo\\Backend\\WhatToDo\\WhatToDo\\WhatToDo.csproj": {}
+    "C:\\Zealand\\Semester_3\\Examen\\WhatToDo\\Backend\\WhatToDo\\RestBackendTest\\RestBackendTest.csproj": {}
   },
   "projects": {
-    "C:\\Zealand\\Semester_3\\Examen\\WhatToDo\\Backend\\WhatToDo\\WhatToDo\\WhatToDo.csproj": {
+    "C:\\Zealand\\Semester_3\\Examen\\WhatToDo\\Backend\\WhatToDo\\RestBackendTest\\RestBackendTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Zealand\\Semester_3\\Examen\\WhatToDo\\Backend\\WhatToDo\\WhatToDo\\WhatToDo.csproj",
-        "projectName": "WhatToDo",
-        "projectPath": "C:\\Zealand\\Semester_3\\Examen\\WhatToDo\\Backend\\WhatToDo\\WhatToDo\\WhatToDo.csproj",
+        "projectUniqueName": "C:\\Zealand\\Semester_3\\Examen\\WhatToDo\\Backend\\WhatToDo\\RestBackendTest\\RestBackendTest.csproj",
+        "projectName": "RestBackendTest",
+        "projectPath": "C:\\Zealand\\Semester_3\\Examen\\WhatToDo\\Backend\\WhatToDo\\RestBackendTest\\RestBackendTest.csproj",
         "packagesPath": "C:\\Users\\nikol\\.nuget\\packages\\",
-        "outputPath": "C:\\Zealand\\Semester_3\\Examen\\WhatToDo\\Backend\\WhatToDo\\WhatToDo\\obj\\",
+        "outputPath": "C:\\Zealand\\Semester_3\\Examen\\WhatToDo\\Backend\\WhatToDo\\RestBackendTest\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -40,6 +40,24 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "MSTest.TestAdapter": {
+              "target": "Package",
+              "version": "[2.0.0, )"
+            },
+            "MSTest.TestFramework": {
+              "target": "Package",
+              "version": "[2.0.0, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.2.0, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[1.0.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

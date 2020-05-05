@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Zealand\\Semester_3\\Examen\\WhatToDo\\Backend\\WhatToDo\\RestAPI\\RestAPI.csproj": {}
+    "C:\\Zealand\\Semester_3\\Examen\\WhatToDo\\Backend\\WhatToDo\\RestApi\\RestApi.csproj": {}
   },
   "projects": {
-    "C:\\Zealand\\Semester_3\\Examen\\WhatToDo\\Backend\\WhatToDo\\RestAPI\\RestAPI.csproj": {
+    "C:\\Zealand\\Semester_3\\Examen\\WhatToDo\\Backend\\WhatToDo\\RestApi\\RestApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Zealand\\Semester_3\\Examen\\WhatToDo\\Backend\\WhatToDo\\RestAPI\\RestAPI.csproj",
-        "projectName": "RestAPI",
-        "projectPath": "C:\\Zealand\\Semester_3\\Examen\\WhatToDo\\Backend\\WhatToDo\\RestAPI\\RestAPI.csproj",
+        "projectUniqueName": "C:\\Zealand\\Semester_3\\Examen\\WhatToDo\\Backend\\WhatToDo\\RestApi\\RestApi.csproj",
+        "projectName": "RestApi",
+        "projectPath": "C:\\Zealand\\Semester_3\\Examen\\WhatToDo\\Backend\\WhatToDo\\RestApi\\RestApi.csproj",
         "packagesPath": "C:\\Users\\nikol\\.nuget\\packages\\",
-        "outputPath": "C:\\Zealand\\Semester_3\\Examen\\WhatToDo\\Backend\\WhatToDo\\RestAPI\\obj\\",
+        "outputPath": "C:\\Zealand\\Semester_3\\Examen\\WhatToDo\\Backend\\WhatToDo\\RestApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

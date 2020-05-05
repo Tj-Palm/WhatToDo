@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Zealand\\Semester_3\\Examen\\WhatToDo\\Backend\\WhatToDo\\RestApi\\RestApi.csproj": {}
+    "C:\\Users\\Benjamin\\source\\repos\\WhatToDo\\Backend\\WhatToDo\\RestApi\\RestApi.csproj": {}
   },
   "projects": {
-    "C:\\Zealand\\Semester_3\\Examen\\WhatToDo\\Backend\\WhatToDo\\RestApi\\RestApi.csproj": {
+    "C:\\Users\\Benjamin\\source\\repos\\WhatToDo\\Backend\\WhatToDo\\RestApi\\RestApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Zealand\\Semester_3\\Examen\\WhatToDo\\Backend\\WhatToDo\\RestApi\\RestApi.csproj",
+        "projectUniqueName": "C:\\Users\\Benjamin\\source\\repos\\WhatToDo\\Backend\\WhatToDo\\RestApi\\RestApi.csproj",
         "projectName": "RestApi",
-        "projectPath": "C:\\Zealand\\Semester_3\\Examen\\WhatToDo\\Backend\\WhatToDo\\RestApi\\RestApi.csproj",
-        "packagesPath": "C:\\Users\\nikol\\.nuget\\packages\\",
-        "outputPath": "C:\\Zealand\\Semester_3\\Examen\\WhatToDo\\Backend\\WhatToDo\\RestApi\\obj\\",
+        "projectPath": "C:\\Users\\Benjamin\\source\\repos\\WhatToDo\\Backend\\WhatToDo\\RestApi\\RestApi.csproj",
+        "packagesPath": "C:\\Users\\Benjamin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Benjamin\\source\\repos\\WhatToDo\\Backend\\WhatToDo\\RestApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\nikol\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Benjamin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -82,7 +82,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,0 +1,9 @@
+C:\Users\Benjamin\source\repos\WhatToDo\Backend\WhatToDo\WhatToDo\bin\Debug\netcoreapp3.1\WhatToDo.deps.json
+C:\Users\Benjamin\source\repos\WhatToDo\Backend\WhatToDo\WhatToDo\bin\Debug\netcoreapp3.1\WhatToDo.dll
+C:\Users\Benjamin\source\repos\WhatToDo\Backend\WhatToDo\WhatToDo\bin\Debug\netcoreapp3.1\WhatToDo.pdb
+C:\Users\Benjamin\source\repos\WhatToDo\Backend\WhatToDo\WhatToDo\obj\Debug\netcoreapp3.1\WhatToDo.csprojAssemblyReference.cache
+C:\Users\Benjamin\source\repos\WhatToDo\Backend\WhatToDo\WhatToDo\obj\Debug\netcoreapp3.1\WhatToDo.csproj.CoreCompileInputs.cache
+C:\Users\Benjamin\source\repos\WhatToDo\Backend\WhatToDo\WhatToDo\obj\Debug\netcoreapp3.1\WhatToDo.AssemblyInfoInputs.cache
+C:\Users\Benjamin\source\repos\WhatToDo\Backend\WhatToDo\WhatToDo\obj\Debug\netcoreapp3.1\WhatToDo.AssemblyInfo.cs
+C:\Users\Benjamin\source\repos\WhatToDo\Backend\WhatToDo\WhatToDo\obj\Debug\netcoreapp3.1\WhatToDo.dll
+C:\Users\Benjamin\source\repos\WhatToDo\Backend\WhatToDo\WhatToDo\obj\Debug\netcoreapp3.1\WhatToDo.pdb

@@ -16,15 +16,14 @@
   <h1>LIST OF ACTIVITIES</h1>
   <h2>WHAT TO DO?</h2>
   <div id="App">
-    <h2>Get All</h2>
     <!-- <button v-on:click="getAllActivities" class="btn btn-primary">Get all books</button> -->
-
     <table class="table table-dark table-hover table-striped table-md table-bordered">
       <thead>
         <tr>
           <th scope="col">Id</th>
           <th scope="col">Name</th>
-          <th scope="col">Type</th>
+          <th scope="col">Activity Level</th>
+          <th scope="col">Environment</th>
           <th scope="col">Weather</th>
           <th scope="col">Time</th>
         </tr>
@@ -33,7 +32,8 @@
         <tr v-for="activity in activities">
           <th scope="row">{{activity.id}}</th>
           <td>{{activity.name}}</td>
-          <th>{{activity.type}}</th>
+          <td>{{activity.activitylevel}}</td>
+          <th>{{activity.environment}}</th>
           <th>{{activity.weather}}</th>
           <th>{{activity.time}}</th>   
         </tr>

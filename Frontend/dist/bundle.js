@@ -2122,7 +2122,7 @@ new Vue({
         errors: [],
         deleteId: 0,
         deleteMessage: "",
-        // formData: { name: "", type: "", weather: "", time: 0 },
+        // formData: { name: "", environment: "", activitylevel: "", weather: "", time: 0 },
         formData: { title: "", author: "", publisher: "", price: 0 },
         addMessage: ""
     },

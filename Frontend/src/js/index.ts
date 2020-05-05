@@ -7,6 +7,8 @@ import {json2table100} from "./genericTable";
 
 let BaseUri: string = "http://anbo-bookstorerest.azurewebsites.net/api/books"
 let AllBooks: JSON;
+let BaseUriA: string = "x"
+let AllActivities: JSON;
 
 interface IActivity {
     id: number,
@@ -38,6 +40,7 @@ new Vue({
     },
     created(){
         // this.getAllActivities(),
+        // this.getAllActivitesJSON,
         this.getAllBooks(),
         this.getAllBooksJSON()
     },
@@ -53,6 +56,16 @@ new Vue({
                     //this.message = error.message
                     alert(error.message) // https://www.w3schools.com/js/js_popup.asp
                 })
+        },
+        getAllActivitesJSON() {
+            Axios.get(BaseUri)
+            .then((Response: AxiosResponse): void =>{
+                console.log("Get books")
+                let data: IActivity[] = Response.data;
+                console.log(data)
+                let result: string = json2table100(data)
+                console.log(result)
+            })
         },
         getAllBooks() {
             Axios.get<IBook[]>(BaseUri) 

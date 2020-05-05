@@ -2112,6 +2112,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var BaseUri = "http://anbo-bookstorerest.azurewebsites.net/api/books";
 var AllBooks;
+var BaseUriA = "x";
+var AllActivities;
 new Vue({
     el: "#App",
     data: {
@@ -2126,6 +2128,7 @@ new Vue({
     },
     created: function () {
         // this.getAllActivities(),
+        // this.getAllActivitesJSON,
         this.getAllBooks(),
             this.getAllBooksJSON();
     },
@@ -2141,6 +2144,16 @@ new Vue({
                 console.log("Activities catch");
                 //this.message = error.message
                 alert(error.message); // https://www.w3schools.com/js/js_popup.asp
+            });
+        },
+        getAllActivitesJSON: function () {
+            _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(BaseUri)
+                .then(function (Response) {
+                console.log("Get books");
+                var data = Response.data;
+                console.log(data);
+                var result = Object(_genericTable__WEBPACK_IMPORTED_MODULE_1__["json2table100"])(data);
+                console.log(result);
             });
         },
         getAllBooks: function () {

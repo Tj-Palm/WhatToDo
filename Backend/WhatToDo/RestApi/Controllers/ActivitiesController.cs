@@ -18,6 +18,8 @@ namespace RestApi.Controllers
         public ActivitiesController(ActivityContext context)
         {
             _context = context;
+            _context.Add(new Activity());
+
         }
 
         // GET: api/Activities

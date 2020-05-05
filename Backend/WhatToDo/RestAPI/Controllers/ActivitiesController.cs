@@ -18,22 +18,39 @@ namespace RestApi.Controllers
         public ActivitiesController(ActivityContext context)
         {
             _context = context;
-            _context.Add(new Activity());
+          AddActivities();
 
         }
+
+        private async void AddActivities()
+        {
+            if (_context.ActivityItems.Count() == 0)
+            {
+                _context.ActivityItems.Add(new Activity("Lawn moving", new TimeSpan(0, 0, 30, 0), "spare time", "outdoor"));
+                await _context.SaveChangesAsync();
+                _context.ActivityItems.Add(new Activity("Watering flowers", new TimeSpan(0, 0, 15, 0), "Spare time", "outdoor"));
+                await _context.SaveChangesAsync();
+                _context.ActivityItems.Add(new Activity("Watch TV", new TimeSpan(0, 0, 45, 0), "Spare time", "inside"));
+                await _context.SaveChangesAsync();
+                _context.ActivityItems.Add(new Activity("Washing clothes", new TimeSpan(0, 3,0, 0), "Work", "inside"));
+                await _context.SaveChangesAsync();
+            }
+
+        }
+
 
         // GET: api/Activities
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Activity>>> GetTodoItems()
         {
-            return await _context.TodoItems.ToListAsync();
+            return await _context.ActivityItems.ToListAsync();
         }
 
         // GET: api/Activities/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Activity>> GetActivity(int id)
         {
-            var activity = await _context.TodoItems.FindAsync(id);
+            var activity = await _context.ActivityItems.FindAsync(id);
 
             if (activity == null)
             {
@@ -81,7 +98,7 @@ namespace RestApi.Controllers
         [HttpPost]
         public async Task<ActionResult<Activity>> PostActivity(Activity activity)
         {
-            _context.TodoItems.Add(activity);
+            _context.ActivityItems.Add(activity);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetActivity", new { id = activity.id }, activity);
@@ -91,13 +108,13 @@ namespace RestApi.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Activity>> DeleteActivity(int id)
         {
-            var activity = await _context.TodoItems.FindAsync(id);
+            var activity = await _context.ActivityItems.FindAsync(id);
             if (activity == null)
             {
                 return NotFound();
             }
 
-            _context.TodoItems.Remove(activity);
+            _context.ActivityItems.Remove(activity);
             await _context.SaveChangesAsync();
 
             return activity;
@@ -105,7 +122,7 @@ namespace RestApi.Controllers
 
         private bool ActivityExists(int id)
         {
-            return _context.TodoItems.Any(e => e.id == id);
+            return _context.ActivityItems.Any(e => e.id == id);
         }
     }
 }

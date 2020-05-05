@@ -13,6 +13,6 @@ namespace RestApi.Models
         {
         }
 
-        public DbSet<Activity> TodoItems { get; set; }
+        public DbSet<Activity> ActivityItems { get; set; }
     }
 }

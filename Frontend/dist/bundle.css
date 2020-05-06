@@ -2,4 +2,17 @@
   color: #0091aa; }
 
 h2, h1 {
-  color: #be4a14; }
+  color: black; }
+
+thead {
+  background-color: #0072cc;
+  color: white; }
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #74aaf5; }
+
+tbody > tr:nth-child(even) {
+  background-color: #f2f2f2; }
+
+tbody > tr:nth-child(odd) {
+  background-color: lightsteelblue; }

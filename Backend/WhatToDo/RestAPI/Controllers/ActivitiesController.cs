@@ -41,7 +41,7 @@ namespace RestApi.Controllers
 
         // GET: api/Activities
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Activity>>> GetTodoItems()
+        public async Task<ActionResult<IEnumerable<Activity>>> GetActivityItems()
         {
             return await _context.ActivityItems.ToListAsync();
         }

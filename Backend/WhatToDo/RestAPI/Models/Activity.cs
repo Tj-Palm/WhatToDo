@@ -12,7 +12,7 @@ namespace RestApi.Models
     {
         private int _id;
         private string _name;
-        private TimeSpan _timeUsage;
+        private int _timeUsage;
         private string _type;
         private string _environment;
 
@@ -20,7 +20,7 @@ namespace RestApi.Models
         {
         }
 
-        public Activity(string name, TimeSpan timeUsage, string type, string environment)
+        public Activity(string name, int timeUsage, string type, string environment)
         {
             _name = name;
             _timeUsage = timeUsage;
@@ -41,7 +41,7 @@ namespace RestApi.Models
             set => _name = value;
         }
 
-        public TimeSpan TimeUsage
+        public int TimeUsage
         {
             get => _timeUsage;
             set => _timeUsage = value;

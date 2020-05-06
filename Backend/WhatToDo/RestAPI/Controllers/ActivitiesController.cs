@@ -26,13 +26,13 @@ namespace RestApi.Controllers
         {
             if (_context.ActivityItems.Count() == 0)
             {
-                _context.ActivityItems.Add(new Activity("Lawn moving", new TimeSpan(0, 0, 30, 0), "spare time", "outdoor"));
+                _context.ActivityItems.Add(new Activity("Lawn moving", 30, "spare time", "outdoor"));
                 await _context.SaveChangesAsync();
-                _context.ActivityItems.Add(new Activity("Watering flowers", new TimeSpan(0, 0, 15, 0), "Spare time", "outdoor"));
+                _context.ActivityItems.Add(new Activity("Watering flowers", 15, "Spare time", "outdoor"));
                 await _context.SaveChangesAsync();
-                _context.ActivityItems.Add(new Activity("Watch TV", new TimeSpan(0, 0, 45, 0), "Spare time", "inside"));
+                _context.ActivityItems.Add(new Activity("Watch TV", 45, "Spare time", "inside"));
                 await _context.SaveChangesAsync();
-                _context.ActivityItems.Add(new Activity("Washing clothes", new TimeSpan(0, 3,0, 0), "Work", "inside"));
+                _context.ActivityItems.Add(new Activity("Washing clothes", 180, "Work", "inside"));
                 await _context.SaveChangesAsync();
             }
 

@@ -60,6 +60,37 @@ namespace RestApi.Controllers
             return activity;
         }
 
+        // GET: api/Activities/random
+        [HttpGet]
+        public async Task<ActionResult<Activity>> GetRandomActivityAsync(ActivityParameter activityParameter)
+        {
+            var activities = await GetActivityItems();
+            List<Activity> activitesFromParameter = new List<Activity>();
+
+            foreach (var activity in activities.Value)
+            {
+                if (activityParameter.ActivityLevel == activity.ActivityLevel)
+                {
+                    if (activityParameter.Environment == activity.Environment)
+                    {
+                        if (activityParameter.TimeUsage <= activity.TimeUsage)
+                        {
+                            activitesFromParameter.Add(activity);
+                        }
+                    }
+                }
+            }
+
+            if (activitesFromParameter.Count == 0)
+            {
+                return NotFound();
+            }
+
+            var r = new Random();
+            var inx = r.Next(0, activitesFromParameter.Count - 1);
+            return activitesFromParameter[inx];
+        }
+
         // PUT: api/Activities/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.

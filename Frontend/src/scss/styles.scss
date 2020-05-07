@@ -1,5 +1,5 @@
 $fontColor: #0091aa;
-$colorHeading: #be4a14;
+$colorHeading: black;
 #content  // div with id: content
 {
     color: $fontColor;
@@ -12,4 +12,21 @@ h2
 
 h1{
     @extend h2;
+}
+
+thead{
+    background-color: #0072cc;
+    color: white;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: #74aaf5;
+}
+
+tbody > tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tbody > tr:nth-child(odd) {
+    background-color: lightsteelblue;
 }

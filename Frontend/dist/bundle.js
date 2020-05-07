@@ -2110,35 +2110,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _genericTable__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./genericTable */ "./src/js/genericTable.ts");
 
 
-var BaseUri = "http://anbo-bookstorerest.azurewebsites.net/api/books";
-var AllBooks;
-var BaseUriA = "x";
+var BaseUri = "http://whattodorest.azurewebsites.net/api/activities";
 var AllActivities;
 new Vue({
     el: "#App",
     data: {
-        // activities: [],
-        books: [],
+        activities: [],
         errors: [],
         deleteId: 0,
         deleteMessage: "",
-        // formData: { name: "", environment: "", activitylevel: "", weather: "", time: 0 },
-        formData: { title: "", author: "", publisher: "", price: 0 },
+        formData: { name: "", environment: "", activityLevel: "", weather: "", timeUsage: 0 },
         addMessage: ""
     },
     created: function () {
-        // this.getAllActivities(),
-        // this.getAllActivitesJSON,
-        this.getAllBooks(),
-            this.getAllBooksJSON();
+        this.getAllActivities(),
+            this.getAllActivitesJSON();
     },
     methods: {
         getAllActivities: function () {
             var _this = this;
-            _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(BaseUri + "activities")
+            _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(BaseUri)
                 .then(function (response) {
                 _this.activities = response.data;
                 console.log("Activities then");
+                console.log(response.data);
             })
                 .catch(function (error) {
                 console.log("Activities catch");
@@ -2147,29 +2142,6 @@ new Vue({
             });
         },
         getAllActivitesJSON: function () {
-            _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(BaseUri)
-                .then(function (Response) {
-                console.log("Get books");
-                var data = Response.data;
-                console.log(data);
-                var result = Object(_genericTable__WEBPACK_IMPORTED_MODULE_1__["json2table100"])(data);
-                console.log(result);
-            });
-        },
-        getAllBooks: function () {
-            var _this = this;
-            _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(BaseUri)
-                .then(function (response) {
-                _this.books = response.data;
-                console.log("Book then");
-            })
-                .catch(function (error) {
-                //this.message = error.message
-                console.log("Book catch");
-                alert(error.message); // https://www.w3schools.com/js/js_popup.asp
-            });
-        },
-        getAllBooksJSON: function () {
             _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(BaseUri)
                 .then(function (Response) {
                 console.log("Get books");

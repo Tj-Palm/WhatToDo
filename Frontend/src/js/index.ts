@@ -5,52 +5,39 @@ import Axios, {
 
 import {json2table100} from "./genericTable";
 
-let BaseUri: string = "http://anbo-bookstorerest.azurewebsites.net/api/books"
-let AllBooks: JSON;
-let BaseUriA: string = "x"
+let BaseUri: string = "http://whattodorest.azurewebsites.net/api/activities"
 let AllActivities: JSON;
 
 interface IActivity {
     id: number,
     name: string,
     environment: string,
-    activitylevel: string,
-    time: number,
+    activityLevel: string,
+    timeUsage: number,
     weather: string
 }
-
-interface IBook {
-    id: number,
-    title: string,
-    author: string,
-    publisher: string,
-    price: number,
- }
 
 new Vue({
     el: "#App",
     data: {
-        // activities: [],
-        books: [],
+        activities: [],
         errors: [],
         deleteId: 0,
         deleteMessage: "",
-        // formData: { name: "", environment: "", activitylevel: "", weather: "", time: 0 },
-        formData: { title: "", author: "", publisher: "", price: 0 },
+        formData: { name: "", environment: "", activityLevel: "", weather: "", timeUsage: 0 },
         addMessage: ""
     },
     created(){
-        // this.getAllActivities(),
-        // this.getAllActivitesJSON,
-        this.getAllBooks(),
-        this.getAllBooksJSON()
+        this.getAllActivities(),
+        this.getAllActivitesJSON()
     },
     methods: {
         getAllActivities() {
-            Axios.get<IActivity[]>(BaseUri + "activities") 
+            Axios.get<IActivity[]>(BaseUri) 
                 .then((response: AxiosResponse<IActivity[]>) => {
                     this.activities = response.data
                     console.log("Activities then")
+                    console.log(response.data)
                 })
                 .catch((error: AxiosError) => {
                     console.log("Activities catch")
@@ -67,29 +54,7 @@ new Vue({
                 let result: string = json2table100(data)
                 console.log(result)
             })
-        },
-        getAllBooks() {
-            Axios.get<IBook[]>(BaseUri) 
-                .then((response: AxiosResponse<IBook[]>) => {
-                    this.books = response.data
-                    console.log("Book then")
-                })
-                .catch((error: AxiosError) => {
-                    //this.message = error.message
-                    console.log("Book catch")
-                    alert(error.message) // https://www.w3schools.com/js/js_popup.asp
-                })
-        },
-        getAllBooksJSON() {
-            Axios.get(BaseUri)
-            .then((Response: AxiosResponse): void =>{
-                console.log("Get books")
-                let data: IBook[] = Response.data;
-                console.log(data)
-                let result: string = json2table100(data)
-                console.log(result)
-            })
-        }
+        }        
         // deleteActivity(deleteId: number) {
         //     let uri: string = BaseUri + "activities" + "/" + deleteId
         //     Axios.delete<void>(uri)

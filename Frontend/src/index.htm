@@ -10,38 +10,65 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.rawgit.com/coderitual/odoo/feature/codevember16/lib/odoo.js"></script>
 </head>
 
 <body>
   <h1>LIST OF ACTIVITIES</h1>
   <div id="App">
     <div class="table-responsive">
-    <!-- <button v-on:click="getAllActivities" class="btn btn-primary">Get all books</button> -->
-    <table class="table table-hover table-md table-bordered">
-      <thead class="thead">
-        <tr>
-          <th scope="col">Id</th>
-          <th scope="col">Name</th>
-          <th scope="col">Activity Level</th>
-          <th scope="col">Environment</th>
-          <!-- <th scope="col">Weather</th> -->
-          <th scope="col">Time in minutes</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="activity in activities">
-          <th scope="row">{{activity.id}}</th>
-          <td>{{activity.name}}</td>
-          <td>{{activity.activityLevel}}</td>
-          <td>{{activity.environment}}</td>
-          <!-- <th>{{activity.weather}}</th> -->
-          <td>{{activity.timeUsage}}</td>   
-        </tr>
-      </tbody>
-    </table>
-    </div>
-
-    <!-- <h2>Delete</h2>
+      <!-- <button v-on:click="getAllActivities" class="btn btn-primary">Get all books</button> -->
+      <table class="table table-hover table-md table-bordered">
+        <thead class="thead">
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Activity Level</th>
+            <th scope="col">Environment</th>
+            <!-- <th scope="col">Weather</th> -->
+            <th scope="col">Time in minutes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="activity in activities">
+            <th scope="row">{{activity.id}}</th>
+            <td>{{activity.name}}</td>
+            <td>{{activity.activityLevel}}</td>
+            <td>{{activity.environment}}</td>
+            <!-- <th>{{activity.weather}}</th> -->
+            <td>{{activity.timeUsage}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="container">
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-secondary active">
+            <input type="radio" name="options" id="option1" autocomplete="off" checked> Active
+          </label>
+          <label class="btn btn-secondary">
+            <input type="radio" name="options" id="option2" autocomplete="off"> Radio
+          </label>
+          <label class="btn btn-secondary">
+            <input type="radio" name="options" id="option3" autocomplete="off"> Radio
+          </label>
+        </div>
+        <form>
+          <div class="custom-control custom-switch">
+            <input type="checkbox" v-model="switch1" class="custom-control-input" id="RelaxOrWork">
+            <label class="custom-control-label" for="RelaxOrWork"><span v-if="switch1 === false">Work</span><span
+                v-if="switch1">Sparetime</span></label>
+          </div>
+        </form>
+        <form>
+          <div class="custom-control custom-switch">
+            <input type="checkbox" v-model="switch2" class="custom-control-input" id="InOrOut">
+            <label class="custom-control-label" for="InOrOut"><span v-if="switch2 === false">Outdoor</span><span
+                v-if="switch2">Indoor</span></label>
+          </div>
+        </form>
+        <button class="btn-dark" v-on:click="RandomActivity">Random</button>
+        <div class="js-odoo"></div>
+        <!-- <h2>Delete</h2>
     <input v-model.number="deleteId" placeholder="id" type="number" />
     <button v-on:click="deleteBook(deleteId)" class="btn btn-warning">Delete</button>
     {{deleteMessage}}
@@ -55,9 +82,9 @@
     <div>{{addMessage}}</div> -->
 
 
-  </div>
+      </div>
 
-  <script src="bundle.js"></script>
+      <script src="bundle.js"></script>
 </body>
 
 </html>

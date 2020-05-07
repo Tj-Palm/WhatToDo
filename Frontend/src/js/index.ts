@@ -17,15 +17,19 @@ interface IActivity {
     weather: string
 }
 
+
+
 new Vue({
     el: "#App",
     data: {
         activities: [],
         errors: [],
-        deleteId: 0,
-        deleteMessage: "",
-        formData: { name: "", environment: "", activityLevel: "", weather: "", timeUsage: 0 },
-        addMessage: ""
+        //deleteId: 0,
+        //deleteMessage: "",
+        //formData: { name: "", environment: "", activityLevel: "", weather: "", timeUsage: 0 },
+        //addMessage: "",
+        switch1: true,
+        switch2: true,
     },
     created(){
         this.getAllActivities(),
@@ -54,6 +58,9 @@ new Vue({
                 let result: string = json2table100(data)
                 console.log(result)
             })
+        },
+        RandomActivity(){
+            odoo.default({ el:'.js-odoo', from: 'NOVEMBER16', to: 'CODEVEMBER', animationDelay: 1000 });
         }        
         // deleteActivity(deleteId: number) {
         //     let uri: string = BaseUri + "activities" + "/" + deleteId

@@ -2117,10 +2117,12 @@ new Vue({
     data: {
         activities: [],
         errors: [],
-        deleteId: 0,
-        deleteMessage: "",
-        formData: { name: "", environment: "", activityLevel: "", weather: "", timeUsage: 0 },
-        addMessage: ""
+        //deleteId: 0,
+        //deleteMessage: "",
+        //formData: { name: "", environment: "", activityLevel: "", weather: "", timeUsage: 0 },
+        //addMessage: "",
+        switch1: true,
+        switch2: true,
     },
     created: function () {
         this.getAllActivities(),
@@ -2150,6 +2152,9 @@ new Vue({
                 var result = Object(_genericTable__WEBPACK_IMPORTED_MODULE_1__["json2table100"])(data);
                 console.log(result);
             });
+        },
+        RandomActivity: function () {
+            odoo.default({ el: '.js-odoo', from: 'NOVEMBER16', to: 'CODEVEMBER', animationDelay: 1000 });
         }
         // deleteActivity(deleteId: number) {
         //     let uri: string = BaseUri + "activities" + "/" + deleteId

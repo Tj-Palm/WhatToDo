@@ -18,7 +18,7 @@ namespace RestApi.Controllers
         public ActivitiesController(ActivityContext context)
         {
             _context = context;
-          AddActivities();
+            AddActivities();
 
         }
 

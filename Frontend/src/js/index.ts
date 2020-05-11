@@ -30,6 +30,8 @@ new Vue({
         //addMessage: "",
         switch1: true,
         switch2: true,
+        result: "pfejgwpjfepofeq",
+        activeresult: false,
     },
     created(){
         this.getAllActivities(),
@@ -60,7 +62,9 @@ new Vue({
             })
         },
         RandomActivity(){
-            odoo.default({ el:'.js-odoo', from: 'NOVEMBER16', to: 'CODEVEMBER', animationDelay: 1000 });
+            odoo.default({ el:'.js-odoo', from: 'ThingToDo', to: 'CODEVEMBER', animationDelay: 1000 });
+            this.activeresult = true;
+            
         }        
         // deleteActivity(deleteId: number) {
         //     let uri: string = BaseUri + "activities" + "/" + deleteId
@@ -91,5 +95,6 @@ new Vue({
         //             alert(error.message)
         //         })
         // }
+        
     }
 })

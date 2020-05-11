@@ -16,3 +16,10 @@ tbody > tr:nth-child(even) {
 
 tbody > tr:nth-child(odd) {
   background-color: lightsteelblue; }
+
+.expand-transition {
+  transition: all .10s ease;
+  height: 30px;
+  padding: 10px;
+  background-color: #eee;
+  overflow: hidden; }

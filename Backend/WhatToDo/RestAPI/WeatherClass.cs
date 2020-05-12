@@ -12,7 +12,6 @@ namespace RestApi
     {
         private const string URL = "http://api.openweathermap.org/data/2.5/weather";
         private const string urlParameters = "?q=Roskilde,dk&APPID=622f66a99c7a179b5c667c2d504ac522";
-        private static 
 
         public WeatherObject GetWeatherObjectFromWeatherApi()
         {

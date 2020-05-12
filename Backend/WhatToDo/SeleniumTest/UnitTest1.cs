@@ -68,7 +68,7 @@ namespace SeleniumTest
         }
 
         [TestMethod]
-        public void TestSelection2()
+        public void TestGetRandomActivity()
         {
             _driver.Navigate().GoToUrl("http://localhost:3000/");
             var randomButton = _driver.FindElement(By.Id("findRandomActivity"));
@@ -76,7 +76,7 @@ namespace SeleniumTest
 
             
             
-            var enviromentElement = _driver.FindElement(By.ClassName("js-odoo"));
+            var enviromentElement = _driver.FindElement(By.Id("NewRandomActivity"));
             var enviromentelementValue = enviromentElement.GetAttribute("Value");
 
             Assert.AreEqual("hej", enviromentelementValue);

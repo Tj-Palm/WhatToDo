@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using RestApi.Models;
 
 namespace RestApi.Controllers
@@ -18,7 +19,7 @@ namespace RestApi.Controllers
         public ActivitiesController(ActivityContext context)
         {
             _context = context;
-          AddActivities();
+            AddActivities();
 
         }
 
@@ -62,24 +63,48 @@ namespace RestApi.Controllers
 
         // GET: api/Activities/random
         [HttpGet]
-        public async Task<ActionResult<Activity>> GetRandomActivityAsync(ActivityParameter activityParameter)
+        [Route("random")]
+        public async Task<ActionResult<IEnumerable<Activity>>> GetRandomActivityAsync(
+            [FromQuery] ActivityParameter activityParameter)
         {
             var activities = await GetActivityItems();
             List<Activity> activitesFromParameter = new List<Activity>();
 
-            foreach (var activity in activities.Value)
+
+
+            if (activityParameter != null)
             {
-                if (activityParameter.ActivityLevel == activity.ActivityLevel)
+                foreach (var activity in activities.Value)
                 {
-                    if (activityParameter.Environment == activity.Environment)
+
+                    bool addActivity = false;
+
+
+
+                    if (activityParameter.ActivityLevel == activity.ActivityLevel)
                     {
-                        if (activityParameter.TimeUsage <= activity.TimeUsage)
-                        {
-                            activitesFromParameter.Add(activity);
-                        }
+                        addActivity = true;
                     }
+
+                    if (activityParameter.Environment == activity.Environment && addActivity != true) 
+                    {
+                        addActivity = false;
+                    }
+                    
+                    if (activityParameter.TimeUsage <= activity.TimeUsage)
+                    {
+                        addActivity = true;
+                    }
+
+                    if (addActivity)
+                    {
+                        activitesFromParameter.Add(activity);
+                    }
+
                 }
             }
+
+
 
             if (activitesFromParameter.Count == 0)
             {
@@ -88,7 +113,7 @@ namespace RestApi.Controllers
 
             var r = new Random();
             var inx = r.Next(0, activitesFromParameter.Count - 1);
-            return activitesFromParameter[inx];
+            return activitesFromParameter;
         }
 
         // PUT: api/Activities/5
@@ -132,7 +157,7 @@ namespace RestApi.Controllers
             _context.ActivityItems.Add(activity);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetActivity", new { id = activity.id }, activity);
+            return CreatedAtAction("GetActivity", new {id = activity.id}, activity);
         }
 
         // DELETE: api/Activities/5

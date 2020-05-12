@@ -86,14 +86,14 @@ new Vue({
         switch2: true,
         result: "",
         activeresult: false,
-        Time: "",
+        Timeusage: "",
         ShowEnvironmentButton: true,
         GetWeatherTimestamp: 0,
     },
 
     created() {
         this.getAllActivities(),
-        this.getAllActivitesJSON()
+            this.getAllActivitesJSON()
     },
 
     methods: {
@@ -110,21 +110,19 @@ new Vue({
                     .then((response: AxiosResponse<WeatherObject>) => {
                         console.log(response.data)
                         let weather = response.data;
-                        if (weather.main.feels_like  < 15) {
+                        if (weather.main.feels_like < 15) {
                             this.ShowEnvironmentButton = false;
                         }
-                        if(weather.id != 800)
-                        {
+                        if (weather.id != 800) {
                             this.ShowEnvironmentButton = false;
                         }
-                        if( weather.id != 801)
-                        {
+                        if (weather.id != 801) {
                             this.ShowEnvironmentButton = false;
                         }
 
                     })
             }
-            else{
+            else {
                 console.log("Not allowed to get weather now")
             }
         },
@@ -153,12 +151,35 @@ new Vue({
                 })
         },
         RandomActivity() {
+            let ActivityLevel: string
+            let Environment: string
 
-            Axios.get(BaseUri + RandomActivityUri + "/?ActivityLevel=" + this.switch1 + "&Environment=" + this.switch2 + "&Time=" + this.Time)
+            if (this.switch1) {
+                ActivityLevel = "SpareTime"
+            }
+            else {
+                ActivityLevel = "Work"
+            }
+
+            if (this.switch2) {
+                Environment = "Indoor"
+            }
+            else {
+                Environment = "Outdoor"
+            }
+
+            Axios.get(BaseUri + AllActivitiesUri + RandomActivityUri + "/?ActivityLevel=" + ActivityLevel + "&Environment=" + Environment)
                 .then((Response: AxiosResponse): void => {
-                    let data: string = Response.data
+                    let data: string = Response.data.name
+                    this.result = data
                     console.log(data)
                 })
+                .catch((Error: AxiosError): void => {
+                    this.result = "Det er ingen Aktiviteter lige nu!!"
+
+                })
+
+
             this.activeresult = true;
         }
         // deleteActivity(deleteId: number) {

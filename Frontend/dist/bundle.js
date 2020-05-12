@@ -2127,7 +2127,7 @@ new Vue({
         switch2: true,
         result: "",
         activeresult: false,
-        Time: "",
+        Timeusage: "",
         ShowEnvironmentButton: true,
         GetWeatherTimestamp: 0,
     },
@@ -2188,10 +2188,29 @@ new Vue({
             });
         },
         RandomActivity: function () {
-            _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(BaseUri + RandomActivityUri + "/?ActivityLevel=" + this.switch1 + "&Environment=" + this.switch2 + "&Time=" + this.Time)
+            var _this = this;
+            var ActivityLevel;
+            var Environment;
+            if (this.switch1) {
+                ActivityLevel = "SpareTime";
+            }
+            else {
+                ActivityLevel = "Work";
+            }
+            if (this.switch2) {
+                Environment = "Indoor";
+            }
+            else {
+                Environment = "Outdoor";
+            }
+            _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(BaseUri + AllActivitiesUri + RandomActivityUri + "/?ActivityLevel=" + ActivityLevel + "&Environment=" + Environment)
                 .then(function (Response) {
-                var data = Response.data;
+                var data = Response.data.name;
+                _this.result = data;
                 console.log(data);
+            })
+                .catch(function (Error) {
+                _this.result = "Det er ingen Aktiviteter lige nu!!";
             });
             this.activeresult = true;
         }

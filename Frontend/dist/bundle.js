@@ -2110,7 +2110,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _genericTable__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./genericTable */ "./src/js/genericTable.ts");
 
 
-var BaseUri = "http://whattodorest.azurewebsites.net/api/activities";
+var BaseUri = "http://whattodorest.azurewebsites.net/api";
+var AllActivitiesUri = "/activities";
+var RandomActivityUri = "/random";
 var AllActivities;
 new Vue({
     el: "#App",
@@ -2123,17 +2125,47 @@ new Vue({
         //addMessage: "",
         switch1: true,
         switch2: true,
-        result: "pfejgwpjfepofeq",
+        result: "",
         activeresult: false,
+        Time: "",
+        ShowEnvironmentButton: true,
+        GetWeatherTimestamp: 0,
     },
     created: function () {
         this.getAllActivities(),
             this.getAllActivitesJSON();
     },
     methods: {
+        getWeatherData: function () {
+            var _this = this;
+            console.log(Date.now());
+            console.log(this.GetWeatherTimestamp);
+            console.log("TS" + this.GetWeatherTimestamp);
+            console.log("DateNow + 60" + (this.GetWeatherTimestamp + 60000 < Date.now()));
+            if (this.GetWeatherTimestamp == 0 || this.GetWeatherTimestamp + 60000 < Date.now()) {
+                this.GetWeatherTimestamp = Date.now();
+                _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://api.openweathermap.org/data/2.5/weather?q=Roskilde,dk&APPID=622f66a99c7a179b5c667c2d504ac522&units=metric")
+                    .then(function (response) {
+                    console.log(response.data);
+                    var weather = response.data;
+                    if (weather.main.feels_like < 15) {
+                        _this.ShowEnvironmentButton = false;
+                    }
+                    if (weather.id != 800) {
+                        _this.ShowEnvironmentButton = false;
+                    }
+                    if (weather.id != 801) {
+                        _this.ShowEnvironmentButton = false;
+                    }
+                });
+            }
+            else {
+                console.log("Not allowed to get weather now");
+            }
+        },
         getAllActivities: function () {
             var _this = this;
-            _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(BaseUri)
+            _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(BaseUri + AllActivitiesUri)
                 .then(function (response) {
                 _this.activities = response.data;
                 console.log("Activities then");
@@ -2146,7 +2178,7 @@ new Vue({
             });
         },
         getAllActivitesJSON: function () {
-            _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(BaseUri)
+            _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(BaseUri + AllActivitiesUri)
                 .then(function (Response) {
                 console.log("Get books");
                 var data = Response.data;
@@ -2156,7 +2188,11 @@ new Vue({
             });
         },
         RandomActivity: function () {
-            odoo.default({ el: '.js-odoo', from: 'ThingToDo', to: 'CODEVEMBER', animationDelay: 1000 });
+            _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(BaseUri + RandomActivityUri + "/?ActivityLevel=" + this.switch1 + "&Environment=" + this.switch2 + "&Time=" + this.Time)
+                .then(function (Response) {
+                var data = Response.data;
+                console.log(data);
+            });
             this.activeresult = true;
         }
         // deleteActivity(deleteId: number) {

@@ -29,15 +29,19 @@ namespace RestApi.Controllers
             {
                 _context.ActivityItems.Add(new Activity("Lawn moving", 40, "Work", "Outdoor"));
                 await _context.SaveChangesAsync();
+                _context.ActivityItems.Add(new Activity("Read a book", 60, "Spare time", "Indoor"));
+                await _context.SaveChangesAsync();
+                _context.ActivityItems.Add(new Activity("Enjoy the sun", 40, "Spare time", "Outdoor"));
+                await _context.SaveChangesAsync();
                 _context.ActivityItems.Add(new Activity("Put clothes in closet", 20, "Work", "Indoor"));
                 await _context.SaveChangesAsync();
-                _context.ActivityItems.Add(new Activity("Dry dust", 20, "Spare time", "Indoor"));
+                _context.ActivityItems.Add(new Activity("Dry dust", 20, "Work", "Indoor"));
                 await _context.SaveChangesAsync();
                 _context.ActivityItems.Add(new Activity("Watering flowers", 10, "Spare time", "Outdoor"));
                 await _context.SaveChangesAsync();
                 _context.ActivityItems.Add(new Activity("Watch TV", 40, "Spare time", "Indoor"));
                 await _context.SaveChangesAsync();
-                _context.ActivityItems.Add(new Activity("Washing clothes", 60, "Spare time", "Indoor"));
+                _context.ActivityItems.Add(new Activity("Washing clothes", 60, "Work", "Indoor"));
                 await _context.SaveChangesAsync();
             }
 

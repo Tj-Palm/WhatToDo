@@ -12,7 +12,7 @@ namespace RestApi.Models
     {
         private int _id;
         private string _name;
-        private int _timeUsage;
+        private int _timeInterval;
         private string _type;
         private string _environment;
 
@@ -20,10 +20,10 @@ namespace RestApi.Models
         {
         }
 
-        public Activity(string name, int timeUsage, string type, string environment)
+        public Activity(string name, int timeInterval, string type, string environment)
         {
             _name = name;
-            _timeUsage = timeUsage;
+            _timeInterval = timeInterval;
             _type = type;
             _environment = environment;
         }
@@ -41,10 +41,10 @@ namespace RestApi.Models
             set => _name = value;
         }
 
-        public int TimeUsage
+        public int TimeInterval
         {
-            get => _timeUsage;
-            set => _timeUsage = value;
+            get => _timeInterval;
+            set => _timeInterval = value;
         }
 
         public string ActivityLevel

@@ -29,7 +29,7 @@ namespace RestApi.Persistency
     //                            activity.Name = reader.GetString(1);
     //                            activity.ActivityLevel = reader.GetString(2);
     //                            activity.Environment = reader.GetString(3);
-    //                            activity.TimeUsage = reader.GetInt32(4);
+    //                            activity.TimeInterval = reader.GetInt32(4);
     //                            activites.Add(activity);
     //                        }
     //                    }
@@ -61,7 +61,7 @@ namespace RestApi.Persistency
     //                            activity.Name = reader.GetString(1);
     //                            activity.ActivityLevel = reader.GetString(2);
     //                            activity.Environment = reader.GetString(3);
-    //                            activity.TimeUsage = reader.GetInt32(4);
+    //                            activity.TimeInterval = reader.GetInt32(4);
 
     //                        }
     //                    }

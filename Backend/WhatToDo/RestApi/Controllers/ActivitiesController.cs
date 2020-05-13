@@ -70,8 +70,6 @@ namespace RestApi.Controllers
             var activities = await GetActivityItems();
             List<Activity> activitesFromParameter = new List<Activity>();
 
-
-
             if (activityParameter != null)
             {
                 foreach (var activity in activities.Value)
@@ -79,17 +77,18 @@ namespace RestApi.Controllers
 
                     bool addActivity = true;
 
+
                     if (activityParameter.ActivityLevel != activity.ActivityLevel)
                     {
                         addActivity = false;
                     }
 
-                    if (activityParameter.Environment != activity.Environment) 
+                    if (activityParameter.Environment != activity.Environment ) 
                     {
                         addActivity = false;
                     }
                     
-                    if (activityParameter.TimeUsage > activity.TimeUsage)
+                    if (activityParameter.TimeUsage >= activity.TimeUsage)
                     {
                         addActivity = false;
                     }

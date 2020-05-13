@@ -11,7 +11,7 @@ h2
 }
 
 h1{
-    @extend h2;
+    @extend h2; 
 }
 
 thead{
@@ -33,10 +33,36 @@ tbody > tr:nth-child(odd) {
 
 
 .fade-enter-active, .fade-leave-active {
-    transition: opacity .10s;
+    transition: opacity 3.0s;
 }
 
 
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
+}
+
+.row {
+    margin-top: 2rem;
+}
+
+.DivAlign {
+    text-align: center;
+}
+
+#findRandomActivity {
+    border-radius: 12px;
+    width: 60%;
+    height: 100%;
+}
+
+#right-items {
+    text-align: right;
+}
+
+#margin-top {
+    margin-top: 10rem;
+}
+
+#margin-top-list {
+    margin-top: 5rem;
 }

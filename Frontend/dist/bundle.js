@@ -2046,6 +2046,17 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./src/Random.htm":
+/*!************************!*\
+  !*** ./src/Random.htm ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "Random.htm";
+
+/***/ }),
+
 /***/ "./src/index.htm":
 /*!***********************!*\
   !*** ./src/index.htm ***!
@@ -2127,7 +2138,7 @@ new Vue({
         switch2: true,
         result: "",
         activeresult: false,
-        Timeusage: "",
+        Timeusage: 10,
         ShowEnvironmentButton: true,
         GetWeatherTimestamp: 0,
     },
@@ -2203,7 +2214,7 @@ new Vue({
             else {
                 Environment = "Outdoor";
             }
-            _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(BaseUri + AllActivitiesUri + RandomActivityUri + "/?ActivityLevel=" + ActivityLevel + "&Environment=" + Environment)
+            _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(BaseUri + AllActivitiesUri + RandomActivityUri + "/?ActivityLevel=" + ActivityLevel + "&Environment=" + Environment + "&TimeUsage=" + this.timeUsage)
                 .then(function (Response) {
                 var data = Response.data.name;
                 _this.result = data;
@@ -2213,6 +2224,7 @@ new Vue({
                 _this.result = "Det er ingen Aktiviteter lige nu!!";
             });
             this.activeresult = true;
+            console.log(this.Timeusage);
         }
         // deleteActivity(deleteId: number) {
         //     let uri: string = BaseUri + "activities" + "/" + deleteId
@@ -2260,13 +2272,14 @@ module.exports = __webpack_require__.p + "bundle.css";
 /***/ }),
 
 /***/ 0:
-/*!**********************************************************************!*\
-  !*** multi ./src/index.htm ./src/scss/styles.scss ./src/js/index.ts ***!
-  \**********************************************************************/
+/*!***************************************************************************************!*\
+  !*** multi ./src/index.htm ./src/Random.htm ./src/scss/styles.scss ./src/js/index.ts ***!
+  \***************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! ./src/index.htm */"./src/index.htm");
+__webpack_require__(/*! ./src/Random.htm */"./src/Random.htm");
 __webpack_require__(/*! ./src/scss/styles.scss */"./src/scss/styles.scss");
 module.exports = __webpack_require__(/*! ./src/js/index.ts */"./src/js/index.ts");
 

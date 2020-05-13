@@ -86,7 +86,7 @@ new Vue({
         switch2: true,
         result: "",
         activeresult: false,
-        Timeusage: "",
+        Timeusage: 10,
         ShowEnvironmentButton: true,
         GetWeatherTimestamp: 0,
     },
@@ -103,8 +103,6 @@ new Vue({
             console.log("TS" + this.GetWeatherTimestamp)
             console.log("DateNow + 60" + (this.GetWeatherTimestamp + 60000 < Date.now()))
             if (this.GetWeatherTimestamp == 0 || this.GetWeatherTimestamp + 60000 < Date.now()) {
-
-
                 this.GetWeatherTimestamp = Date.now();
                 Axios.get<WeatherObject>("http://api.openweathermap.org/data/2.5/weather?q=Roskilde,dk&APPID=622f66a99c7a179b5c667c2d504ac522&units=metric")
                     .then((response: AxiosResponse<WeatherObject>) => {
@@ -168,7 +166,7 @@ new Vue({
                 Environment = "Outdoor"
             }
 
-            Axios.get(BaseUri + AllActivitiesUri + RandomActivityUri + "/?ActivityLevel=" + ActivityLevel + "&Environment=" + Environment)
+            Axios.get(BaseUri + AllActivitiesUri + RandomActivityUri + "/?ActivityLevel=" + ActivityLevel + "&Environment=" + Environment + "&TimeUsage=" + this.timeUsage)
                 .then((Response: AxiosResponse): void => {
                     let data: string = Response.data.name
                     this.result = data
@@ -181,6 +179,7 @@ new Vue({
 
 
             this.activeresult = true;
+            console.log(this.Timeusage)
         }
         // deleteActivity(deleteId: number) {
         //     let uri: string = BaseUri + "activities" + "/" + deleteId

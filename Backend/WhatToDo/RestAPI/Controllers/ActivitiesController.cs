@@ -27,11 +27,11 @@ namespace RestApi.Controllers
         {
             if (_context.ActivityItems.Count() == 0)
             {
-                _context.ActivityItems.Add(new Activity("Lawn moving", 30, "Spare time", "Outdoor"));
+                _context.ActivityItems.Add(new Activity("Lawn moving", 30, "SpareTime", "Outdoor"));
                 await _context.SaveChangesAsync();
-                _context.ActivityItems.Add(new Activity("Watering flowers", 15, "Spare time", "Outdoor"));
+                _context.ActivityItems.Add(new Activity("Watering flowers", 15, "SpareTime", "Outdoor"));
                 await _context.SaveChangesAsync();
-                _context.ActivityItems.Add(new Activity("Watch TV", 45, "Spare time", "Indoor"));
+                _context.ActivityItems.Add(new Activity("Watch TV", 45, "SpareTime", "Indoor"));
                 await _context.SaveChangesAsync();
                 _context.ActivityItems.Add(new Activity("Washing clothes", 180, "Work", "Indoor"));
                 await _context.SaveChangesAsync();
@@ -64,7 +64,7 @@ namespace RestApi.Controllers
         // GET: api/Activities/random
         [HttpGet]
         [Route("random")]
-        public async Task<ActionResult<IEnumerable<Activity>>> GetRandomActivityAsync(
+        public async Task<ActionResult<Activity>> GetRandomActivityAsync(
             [FromQuery] ActivityParameter activityParameter)
         {
             var activities = await GetActivityItems();
@@ -110,7 +110,7 @@ namespace RestApi.Controllers
 
             var r = new Random();
             var inx = r.Next(0, activitesFromParameter.Count - 1);
-            return activitesFromParameter;
+            return activitesFromParameter[inx];
         }
 
         // PUT: api/Activities/5

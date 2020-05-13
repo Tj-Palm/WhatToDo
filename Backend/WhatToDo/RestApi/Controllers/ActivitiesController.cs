@@ -47,6 +47,11 @@ namespace RestApi.Controllers
 
         }
 
+        private async void UserToLogin()
+        {
+            _context.Users.Add(new User())
+        }
+
 
         // GET: api/Activities
         [HttpGet]

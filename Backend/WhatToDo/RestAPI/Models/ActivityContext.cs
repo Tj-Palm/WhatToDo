@@ -14,5 +14,7 @@ namespace RestApi.Models
         }
 
         public DbSet<Activity> ActivityItems { get; set; }
+
+        public DbSet<User> Users { get; set; }
     }
 }

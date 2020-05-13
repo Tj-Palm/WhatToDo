@@ -86,7 +86,7 @@ new Vue({
         switch2: true,
         result: "",
         activeresult: false,
-        timeInterval: 10,
+        TimeInterval: 10,
         ShowEnvironmentButton: true,
         GetWeatherTimestamp: 0,
     },
@@ -98,26 +98,18 @@ new Vue({
 
     methods: {
         getWeatherData() {
-            console.log(Date.now())
-            console.log(this.GetWeatherTimestamp)
-            console.log("TS" + this.GetWeatherTimestamp)
-            console.log("DateNow + 60" + (this.GetWeatherTimestamp + 60000 < Date.now()))
             if (this.GetWeatherTimestamp == 0 || this.GetWeatherTimestamp + 60000 < Date.now()) {
                 this.GetWeatherTimestamp = Date.now();
                 Axios.get<WeatherObject>("http://api.openweathermap.org/data/2.5/weather?q=Roskilde,dk&APPID=622f66a99c7a179b5c667c2d504ac522&units=metric")
                     .then((response: AxiosResponse<WeatherObject>) => {
-                        console.log(response.data)
                         let weather = response.data;
-                        if (weather.main.feels_like < 15) {
+                        if (weather.main.feels_like < 5) {
                             this.ShowEnvironmentButton = false;
                         }
-                        if (weather.id != 800) {
+                        
+                        if (weather.weather[0].id != 800 && weather.weather[0].id != 801 && weather.weather[0].id != 802) {
                             this.ShowEnvironmentButton = false;
                         }
-                        if (weather.id != 801) {
-                            this.ShowEnvironmentButton = false;
-                        }
-
                     })
             }
             else {
@@ -166,8 +158,9 @@ new Vue({
             else {
                 Environment = "Outdoor"
             }
-            console.log(this.timeInterval)
-            Axios.get(BaseUri + AllActivitiesUri + RandomActivityUri + "/?ActivityLevel=" + ActivityLevel + "&Environment=" + Environment + "&timeInterval=" + this.timeInterval)
+            console.log(this.TimeInterval)
+
+            Axios.get(BaseUri + AllActivitiesUri + RandomActivityUri + "/?ActivityLevel=" + ActivityLevel + "&Environment=" + Environment + "&TimeInterval=" + this.TimeInterval)
                 .then((Response: AxiosResponse): void => {
                     let data: string = Response.data.name
                     this.result = data
@@ -180,7 +173,7 @@ new Vue({
 
 
             this.activeresult = true;
-            console.log(this.timeInterval)
+            console.log(this.TimeInterval)
         }
         // deleteActivity(deleteId: number) {
         //     let uri: string = BaseUri + "activities" + "/" + deleteId

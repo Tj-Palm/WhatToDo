@@ -2097,7 +2097,7 @@ new Vue({
         switch2: true,
         result: "",
         activeresult: false,
-        timeInterval: 10,
+        TimeInterval: 10,
         ShowEnvironmentButton: true,
         GetWeatherTimestamp: 0,
     },
@@ -2108,23 +2108,15 @@ new Vue({
     methods: {
         getWeatherData: function () {
             var _this = this;
-            console.log(Date.now());
-            console.log(this.GetWeatherTimestamp);
-            console.log("TS" + this.GetWeatherTimestamp);
-            console.log("DateNow + 60" + (this.GetWeatherTimestamp + 60000 < Date.now()));
             if (this.GetWeatherTimestamp == 0 || this.GetWeatherTimestamp + 60000 < Date.now()) {
                 this.GetWeatherTimestamp = Date.now();
                 _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get("http://api.openweathermap.org/data/2.5/weather?q=Roskilde,dk&APPID=622f66a99c7a179b5c667c2d504ac522&units=metric")
                     .then(function (response) {
-                    console.log(response.data);
                     var weather = response.data;
-                    if (weather.main.feels_like < 15) {
+                    if (weather.main.feels_like < 5) {
                         _this.ShowEnvironmentButton = false;
                     }
-                    if (weather.id != 800) {
-                        _this.ShowEnvironmentButton = false;
-                    }
-                    if (weather.id != 801) {
+                    if (weather.weather[0].id != 800 && weather.weather[0].id != 801 && weather.weather[0].id != 802) {
                         _this.ShowEnvironmentButton = false;
                     }
                 });
@@ -2174,8 +2166,8 @@ new Vue({
             else {
                 Environment = "Outdoor";
             }
-            console.log(this.timeInterval);
-            _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(BaseUri + AllActivitiesUri + RandomActivityUri + "/?ActivityLevel=" + ActivityLevel + "&Environment=" + Environment + "&timeInterval=" + this.timeInterval)
+            console.log(this.TimeInterval);
+            _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(BaseUri + AllActivitiesUri + RandomActivityUri + "/?ActivityLevel=" + ActivityLevel + "&Environment=" + Environment + "&TimeInterval=" + this.TimeInterval)
                 .then(function (Response) {
                 var data = Response.data.name;
                 _this.result = data;
@@ -2185,7 +2177,7 @@ new Vue({
                 _this.result = "Det er ingen Aktiviteter lige nu!!";
             });
             this.activeresult = true;
-            console.log(this.timeInterval);
+            console.log(this.TimeInterval);
         }
         // deleteActivity(deleteId: number) {
         //     let uri: string = BaseUri + "activities" + "/" + deleteId

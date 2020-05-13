@@ -72,7 +72,7 @@ namespace RestApi.Controllers
         // GET: api/Activities/random
         [HttpGet]
         [Route("random")]
-        public async Task<ActionResult<IEnumerable<Activity>>> GetRandomActivityAsync(
+        public async Task<ActionResult<Activity>> GetRandomActivityAsync(
             [FromQuery] ActivityParameter activityParameter)
         {
             var activities = await GetActivityItems();
@@ -118,7 +118,7 @@ namespace RestApi.Controllers
 
             var r = new Random();
             var inx = r.Next(0, activitesFromParameter.Count - 1);
-            return activitesFromParameter;
+            return activitesFromParameter[inx];
         }
 
         // PUT: api/Activities/5

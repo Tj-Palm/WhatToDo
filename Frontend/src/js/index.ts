@@ -121,11 +121,8 @@ new Vue({
             Axios.get<IActivity[]>(BaseUri + AllActivitiesUri)
                 .then((response: AxiosResponse<IActivity[]>) => {
                     this.activities = response.data
-                    console.log("Activities then")
-                    console.log(response.data)
                 })
                 .catch((error: AxiosError) => {
-                    console.log("Activities catch")
                     //this.message = error.message
                     alert(error.message) // https://www.w3schools.com/js/js_popup.asp
                 })

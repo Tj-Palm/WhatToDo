@@ -2130,11 +2130,8 @@ new Vue({
             _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(BaseUri + AllActivitiesUri)
                 .then(function (response) {
                 _this.activities = response.data;
-                console.log("Activities then");
-                console.log(response.data);
             })
                 .catch(function (error) {
-                console.log("Activities catch");
                 //this.message = error.message
                 alert(error.message); // https://www.w3schools.com/js/js_popup.asp
             });

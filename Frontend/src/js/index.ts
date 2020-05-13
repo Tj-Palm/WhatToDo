@@ -15,7 +15,7 @@ interface IActivity {
     name: string,
     environment: string,
     activityLevel: string,
-    timeUsage: number,
+    timeInterval: number,
     weather: string
 }
 
@@ -80,20 +80,20 @@ new Vue({
         errors: [],
         //deleteId: 0,
         //deleteMessage: "",
-        //formData: { name: "", environment: "", activityLevel: "", weather: "", timeUsage: 0 },
+        //formData: { name: "", environment: "", activityLevel: "", weather: "", timeInterval: 0 },
         //addMessage: "",
         switch1: true,
         switch2: true,
         result: "",
         activeresult: false,
-        Timeusage: 10,
+        timeInterval: 10,
         ShowEnvironmentButton: true,
         GetWeatherTimestamp: 0,
     },
 
     created() {
-        this.getAllActivities(),
-            this.getAllActivitesJSON()
+        this.getAllActivities()
+            //this.getAllActivitesJSON()
     },
 
     methods: {
@@ -138,19 +138,20 @@ new Vue({
                     alert(error.message) // https://www.w3schools.com/js/js_popup.asp
                 })
         },
-        getAllActivitesJSON() {
-            Axios.get(BaseUri + AllActivitiesUri)
-                .then((Response: AxiosResponse): void => {
-                    console.log("Get books")
-                    let data: IActivity[] = Response.data;
-                    console.log(data)
-                    let result: string = json2table100(data)
-                    console.log(result)
-                })
-        },
+        // getAllActivitesJSON() {
+        //     Axios.get(BaseUri + AllActivitiesUri)
+        //         .then((Response: AxiosResponse): void => {
+        //             console.log("Get books")
+        //             let data: IActivity[] = Response.data;
+        //             console.log(data)
+        //             let result: string = json2table100(data)
+        //             console.log(result)
+        //         })
+        // },
         RandomActivity() {
             let ActivityLevel: string
             let Environment: string
+            this.result = "";
 
             if (this.switch1) {
                 ActivityLevel = "SpareTime"
@@ -165,12 +166,12 @@ new Vue({
             else {
                 Environment = "Outdoor"
             }
-
-            Axios.get(BaseUri + AllActivitiesUri + RandomActivityUri + "/?ActivityLevel=" + ActivityLevel + "&Environment=" + Environment + "&TimeUsage=" + this.timeUsage)
+            console.log(this.timeInterval)
+            Axios.get(BaseUri + AllActivitiesUri + RandomActivityUri + "/?ActivityLevel=" + ActivityLevel + "&Environment=" + Environment + "&timeInterval=" + this.timeInterval)
                 .then((Response: AxiosResponse): void => {
                     let data: string = Response.data.name
                     this.result = data
-                    console.log(data)
+                    console.log(Response.data)
                 })
                 .catch((Error: AxiosError): void => {
                     this.result = "Det er ingen Aktiviteter lige nu!!"
@@ -179,7 +180,7 @@ new Vue({
 
 
             this.activeresult = true;
-            console.log(this.Timeusage)
+            console.log(this.timeInterval)
         }
         // deleteActivity(deleteId: number) {
         //     let uri: string = BaseUri + "activities" + "/" + deleteId

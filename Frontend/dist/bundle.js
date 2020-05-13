@@ -2068,45 +2068,6 @@ module.exports = __webpack_require__.p + "index.htm";
 
 /***/ }),
 
-/***/ "./src/js/genericTable.ts":
-/*!********************************!*\
-  !*** ./src/js/genericTable.ts ***!
-  \********************************/
-/*! exports provided: json2table100, capitalizeFirstLetter */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "json2table100", function() { return json2table100; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "capitalizeFirstLetter", function() { return capitalizeFirstLetter; });
-function json2table100(json) {
-    var cols = Object.keys(json[0]);
-    var headerRow = "";
-    var bodyRows = "";
-    // cols.forEach((colName: string) => {
-    //     // headerRow += "<th>" + capitalizeFirstLetter(colName) + "</th>"
-    // });
-    json.forEach(function (row) {
-        bodyRows += "<tr>";
-        // loop over object properties and create cells
-        cols.forEach(function (colName) {
-            bodyRows += "<td>" + (typeof row[colName] === "object" ? JSON.stringify(row[colName]) : row[colName]) + "</td>";
-        });
-        bodyRows += "</tr>";
-    });
-    return "<table><thead><tr>" +
-        headerRow +
-        "</tr></thead><tbody>" +
-        bodyRows +
-        "</tbody></table>";
-}
-function capitalizeFirstLetter(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
-
-/***/ }),
-
 /***/ "./src/js/index.ts":
 /*!*************************!*\
   !*** ./src/js/index.ts ***!
@@ -2118,8 +2079,6 @@ function capitalizeFirstLetter(str) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/axios/index */ "./node_modules/axios/index.js");
 /* harmony import */ var _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _genericTable__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./genericTable */ "./src/js/genericTable.ts");
-
 
 var BaseUri = "http://whattodorest.azurewebsites.net/api";
 var AllActivitiesUri = "/activities";
@@ -2132,19 +2091,19 @@ new Vue({
         errors: [],
         //deleteId: 0,
         //deleteMessage: "",
-        //formData: { name: "", environment: "", activityLevel: "", weather: "", timeUsage: 0 },
+        //formData: { name: "", environment: "", activityLevel: "", weather: "", timeInterval: 0 },
         //addMessage: "",
         switch1: true,
         switch2: true,
         result: "",
         activeresult: false,
-        Timeusage: 10,
+        timeInterval: 10,
         ShowEnvironmentButton: true,
         GetWeatherTimestamp: 0,
     },
     created: function () {
-        this.getAllActivities(),
-            this.getAllActivitesJSON();
+        this.getAllActivities();
+        //this.getAllActivitesJSON()
     },
     methods: {
         getWeatherData: function () {
@@ -2188,20 +2147,21 @@ new Vue({
                 alert(error.message); // https://www.w3schools.com/js/js_popup.asp
             });
         },
-        getAllActivitesJSON: function () {
-            _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(BaseUri + AllActivitiesUri)
-                .then(function (Response) {
-                console.log("Get books");
-                var data = Response.data;
-                console.log(data);
-                var result = Object(_genericTable__WEBPACK_IMPORTED_MODULE_1__["json2table100"])(data);
-                console.log(result);
-            });
-        },
+        // getAllActivitesJSON() {
+        //     Axios.get(BaseUri + AllActivitiesUri)
+        //         .then((Response: AxiosResponse): void => {
+        //             console.log("Get books")
+        //             let data: IActivity[] = Response.data;
+        //             console.log(data)
+        //             let result: string = json2table100(data)
+        //             console.log(result)
+        //         })
+        // },
         RandomActivity: function () {
             var _this = this;
             var ActivityLevel;
             var Environment;
+            this.result = "";
             if (this.switch1) {
                 ActivityLevel = "SpareTime";
             }
@@ -2214,17 +2174,18 @@ new Vue({
             else {
                 Environment = "Outdoor";
             }
-            _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(BaseUri + AllActivitiesUri + RandomActivityUri + "/?ActivityLevel=" + ActivityLevel + "&Environment=" + Environment + "&TimeUsage=" + this.timeUsage)
+            console.log(this.timeInterval);
+            _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(BaseUri + AllActivitiesUri + RandomActivityUri + "/?ActivityLevel=" + ActivityLevel + "&Environment=" + Environment + "&timeInterval=" + this.timeInterval)
                 .then(function (Response) {
                 var data = Response.data.name;
                 _this.result = data;
-                console.log(data);
+                console.log(Response.data);
             })
                 .catch(function (Error) {
                 _this.result = "Det er ingen Aktiviteter lige nu!!";
             });
             this.activeresult = true;
-            console.log(this.Timeusage);
+            console.log(this.timeInterval);
         }
         // deleteActivity(deleteId: number) {
         //     let uri: string = BaseUri + "activities" + "/" + deleteId

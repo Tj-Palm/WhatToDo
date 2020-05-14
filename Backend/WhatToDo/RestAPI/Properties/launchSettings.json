@@ -20,7 +20,7 @@
     "RestApi": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/activities",
+      "launchUrl": "api/users",
       "applicationUrl": "http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

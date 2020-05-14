@@ -2,7 +2,7 @@
   color: #0091aa; }
 
 h2, h1 {
-  color: black; }
+  color: #FFB133; }
 
 thead {
   background-color: #0072cc;
@@ -25,6 +25,9 @@ tbody > tr:nth-child(odd) {
 
 .row {
   margin-top: 2rem; }
+
+.top {
+  margin-top: 0rem; }
 
 .DivAlign {
   text-align: center; }

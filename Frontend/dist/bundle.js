@@ -2046,6 +2046,17 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./src/Login.htm":
+/*!***********************!*\
+  !*** ./src/Login.htm ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "Login.htm";
+
+/***/ }),
+
 /***/ "./src/Random.htm":
 /*!************************!*\
   !*** ./src/Random.htm ***!
@@ -2222,16 +2233,17 @@ module.exports = __webpack_require__.p + "bundle.css";
 /***/ }),
 
 /***/ 0:
-/*!***************************************************************************************!*\
-  !*** multi ./src/index.htm ./src/Random.htm ./src/scss/styles.scss ./src/js/index.ts ***!
-  \***************************************************************************************/
+/*!*******************************************************************************************************!*\
+  !*** multi ./src/index.htm ./src/Random.htm ./src/scss/styles.scss ./src/js/index.ts ./src/Login.htm ***!
+  \*******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! ./src/index.htm */"./src/index.htm");
 __webpack_require__(/*! ./src/Random.htm */"./src/Random.htm");
 __webpack_require__(/*! ./src/scss/styles.scss */"./src/scss/styles.scss");
-module.exports = __webpack_require__(/*! ./src/js/index.ts */"./src/js/index.ts");
+__webpack_require__(/*! ./src/js/index.ts */"./src/js/index.ts");
+module.exports = __webpack_require__(/*! ./src/Login.htm */"./src/Login.htm");
 
 
 /***/ })

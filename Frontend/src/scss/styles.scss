@@ -1,5 +1,5 @@
 $fontColor: #0091aa;
-$colorHeading: black;
+$colorHeading: #FFB133;
 #content  // div with id: content
 {
     color: $fontColor;
@@ -43,6 +43,10 @@ tbody > tr:nth-child(odd) {
 
 .row {
     margin-top: 2rem;
+}
+
+.top {
+    margin-top: 0rem;
 }
 
 .DivAlign {

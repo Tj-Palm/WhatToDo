@@ -2,7 +2,7 @@
 {
     public class ActivityParameter
     {
-        private int _timeUsage;
+        private int _timeInterval;
         private string _type;
         private string _environment;
 
@@ -10,18 +10,18 @@
         {
         }
 
-        public ActivityParameter(int timeUsage, string type, string environment)
+        public ActivityParameter(int timeInterval, string type, string environment)
         {
             
-            _timeUsage = timeUsage;
+            _timeInterval = timeInterval;
             _type = type;
             _environment = environment;
         }
 
-        public int TimeUsage
+        public int TimeInterval
         {
-            get => _timeUsage;
-            set => _timeUsage = value;
+            get => _timeInterval;
+            set => _timeInterval = value;
         }
 
         public string ActivityLevel

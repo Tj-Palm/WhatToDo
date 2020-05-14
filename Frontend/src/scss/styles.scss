@@ -1,5 +1,5 @@
 $fontColor: #0091aa;
-$colorHeading: #be4a14;
+$colorHeading: black;
 #content  // div with id: content
 {
     color: $fontColor;
@@ -11,5 +11,58 @@ h2
 }
 
 h1{
-    @extend h2;
+    @extend h2; 
+}
+
+thead{
+    background-color: #0072cc;
+    color: white;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: #74aaf5;
+}
+
+tbody > tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tbody > tr:nth-child(odd) {
+    background-color: lightsteelblue;
+}
+
+
+.fade-enter-active, .fade-leave-active {
+    transition: opacity 3.0s;
+}
+
+
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
+.row {
+    margin-top: 2rem;
+}
+
+.DivAlign {
+    text-align: center;
+}
+
+#findRandomActivity {
+    border-radius: 12px;
+    width: 50%;
+    height: 110%;
+}
+
+#right-items {
+    text-align: right;
+}
+
+#margin-top {
+    margin-top: 10rem;
+}
+
+#margin-top-list {
+    margin-top: 5rem;
 }

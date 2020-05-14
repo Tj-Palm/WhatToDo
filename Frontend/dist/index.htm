@@ -3,7 +3,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>WhatToDo</title>
+  <title>List of activities</title>
   <link rel="stylesheet" type="text/css" href="bundle.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -13,83 +13,56 @@
 </head>
 
 <body>
-  <h1>LIST OF ACTIVITIES</h1>
-  <h2>WHAT TO DO?</h2>
-  <div id="App">
-    <!-- <button v-on:click="getAllActivities" class="btn btn-primary">Get all books</button> -->
-    <table class="table table-dark table-hover table-striped table-md table-bordered">
-      <thead>
-        <tr>
-          <th scope="col">Id</th>
-          <th scope="col">Name</th>
-          <th scope="col">Activity Level</th>
-          <th scope="col">Environment</th>
-          <th scope="col">Weather</th>
-          <th scope="col">Time</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="activity in activities">
-          <th scope="row">{{activity.id}}</th>
-          <td>{{activity.name}}</td>
-          <td>{{activity.activitylevel}}</td>
-          <th>{{activity.environment}}</th>
-          <th>{{activity.weather}}</th>
-          <th>{{activity.time}}</th>   
-        </tr>
-           <!-- <ul>
-              <li v-for="activity in activites">
-                {{activity.id}} : {{activity.name}} {{activity.type}} {{activity.weather}} {{activity.time}}
-              </li>
-            </ul> -->
-      </tbody>
-    </table>
-
-
-
-    <table class="table table-dark table-hover table-striped table-md table-bordered">
-      <thead>
-        <tr>
-          <th scope="col">Id</th>
-          <th scope="col">Title</th>
-          <th scope="col">Author</th>
-          <th scope="col">Publisher</th>
-          <th scope="col">Price</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="book in books">
-          <th scope="row">{{book.id}}</th>
-          <td>{{book.title}}</td>
-          <th>{{book.author}}</th>
-          <th>{{book.publisher}}</th>
-          <th>{{book.price}}</th>
-          
-        </tr>
-        <!-- <ul class="list-group">
-          <li class="list-group-item" v-for="book in books">
-            {{book.id}} : {{book.title}} {{book.author }} {{book.Publisher}} {{book.price}} 
-          </li>
-        </ul> -->
-      </tbody>
-    </table>
-
-    <!-- <h2>Delete</h2>
-    <input v-model.number="deleteId" placeholder="id" type="number" />
-    <button v-on:click="deleteBook(deleteId)" class="btn btn-warning">Delete</button>
-    {{deleteMessage}}
-
-    <h2>Add</h2>
-    <input v-model="formData.name" placeholder="name" type="text" />
-    <input v-model="formData.type" placeholder="type" type="text" />
-    <input v-model="formData.weather" placeholder="weather" type="text" />
-    <input v-model.number="formData.time" placeholder="time" type="number" />
-    <button v-on:click="addActivity()" class="btn btn-success">Add</button>
-    <div>{{addMessage}}</div> -->
-
-
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">WhatToDo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">List of activities<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./Random.htm">Get random activity</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li> -->
+      </ul>
+    </div>
+  </nav>
+  <div class="container" id="margin-top-list">
+    <h1 class="DivAlign">List of activities</h1>
   </div>
-
+  <div id="App">
+    <div class="table-responsive">
+      <!-- <button v-on:click="getAllActivities" class="btn btn-primary">Get all books</button> -->
+      <table class="table table-hover table-md table-bordered">
+        <thead class="thead">
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Activity Level</th>
+            <th scope="col">Environment</th>
+            <!-- <th scope="col">Weather</th> -->
+            <th scope="col">Time in minutes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="activity in activities">
+            <th scope="row">{{activity.id}}</th>
+            <td>{{activity.name}}</td>
+            <td>{{activity.activityLevel}}</td>
+            <td>{{activity.environment}}</td>
+            <!-- <th>{{activity.weather}}</th> -->
+            <td>{{activity.timeInterval}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
   <script src="bundle.js"></script>
 </body>
 

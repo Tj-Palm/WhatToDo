@@ -92,16 +92,13 @@ namespace RestApi.Controllers
                     {
                         addActivity = false;
                     }
-
                     if (addActivity)
                     {
                         activitesFromParameter.Add(activity);
+                        
                     }
-
                 }
             }
-
-
 
             if (activitesFromParameter.Count == 0)
             {

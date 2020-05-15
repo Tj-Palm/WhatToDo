@@ -119,5 +119,18 @@ namespace SeleniumTest
             Assert.AreEqual("Wrong username or password!", Text);
         }
 
+        [TestMethod]
+        public void TestRedirectToLoginPage()
+        {
+            _driver.Navigate().GoToUrl("http://localhost:3000/");
+
+            var loginNavButton = _driver.FindElement(By.Id("navLogin"));
+            loginNavButton.Click();
+
+            var Title = "Loginpage";
+
+            Assert.AreEqual(Title, _driver.Title);
+        }
+
     }
 }

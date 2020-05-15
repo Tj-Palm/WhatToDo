@@ -47,6 +47,11 @@ namespace RestApi.Controllers
 
         }
 
+        private async void UserToLogin()
+        {
+            _context.Users.Add(new User())
+        }
+
 
         // GET: api/Activities
         [HttpGet]
@@ -100,16 +105,13 @@ namespace RestApi.Controllers
                     {
                         addActivity = false;
                     }
-
                     if (addActivity)
                     {
                         activitesFromParameter.Add(activity);
+                        
                     }
-
                 }
             }
-
-
 
             if (activitesFromParameter.Count == 0)
             {

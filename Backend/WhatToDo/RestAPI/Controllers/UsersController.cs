@@ -65,9 +65,29 @@ namespace RestApi.Controllers
             return user;
         }
 
-       // POST: api/Users
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [HttpGet]
+        [Route("Login")]
+        public async Task<ActionResult> LoginUserAsync(
+            [FromQuery] User userRequest)
+        {
+            var users = await GetUsers();
+
+            if (userRequest != null)
+            {
+                foreach (var userServer in users.Value)
+                {
+                    if (userRequest.Username == userServer.Username && userRequest.Password == userServer.Password)
+                    {
+                        return Accepted();
+                    }
+                }
+            }
+            return NotFound();
+        }
+
+        // POST: api/Users
+       // To protect from overposting attacks, enable the specific properties you want to bind to, for
+       // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {

@@ -65,15 +65,14 @@
                         <span class="input-group-text badge badge-danger">!</span>
                     </div>
                 </div>
-                    <div class="text-center">
-                        <button v-on:click="Login" class="btn btn-primary btn-md row"
-                            style="width: 50%; border-radius: 12px;">Login</button>
-                    </div>
-                    <span class="alert alert-danger row" v-if="showLoginAlert" role="alert"><strong> Wrong username or
-                            password! </strong></span>
+                <div class="text-center">
+                    <button v-on:click="Login" class="btn btn-primary btn-md row"
+                        style="width: 50%; border-radius: 12px;">Login</button>
                 </div>
-                <div class="col"></div>
+                <span class="alert alert-danger row" v-if="showLoginAlert" role="alert"><strong> Wrong username or
+                        password! </strong></span>
             </div>
+            <div class="col"></div>
         </div>
     </div>
 </div>

@@ -13,8 +13,8 @@ namespace RestApi.Models
 
         public User(string Username, string Password)
         {
-            _password = Password;
             _userName = Username;
+            _password = Password;
         }
 
         public User()
@@ -27,6 +27,11 @@ namespace RestApi.Models
             get => _userId;
             set => _userId = value;
         }
+        public string Username
+        {
+            get => _userName;
+            set => _userName = value;
+        }
 
         public string Password
         {
@@ -34,10 +39,6 @@ namespace RestApi.Models
             set => _password = value;
         }
 
-        public string Username
-        {
-            get => _userName;
-            set => _userName = value;
-        }
+   
     }
 }

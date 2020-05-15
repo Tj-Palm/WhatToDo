@@ -10,7 +10,7 @@ namespace SeleniumTest
     [TestClass]
     public class SeleniumTypescript
     {
-        private static string driverFolder = "C:\\SeleniumDrivers";
+        private static string driverFolder = "C:\\Users\\Daniel\\Desktop\\SeleniumDrivers";
         private static IWebDriver _driver;
 
         [ClassInitialize]
@@ -59,12 +59,6 @@ namespace SeleniumTest
             string enviromentelementValue = enviromentElement.GetAttribute("checked");
 
             Assert.AreEqual("true", enviromentelementValue);
-
-            
-
-
-
-
         }
 
         [TestMethod]
@@ -80,6 +74,49 @@ namespace SeleniumTest
             var enviromentelementValue = enviromentElement.GetAttribute("Value");
 
             Assert.AreEqual("hej", enviromentelementValue);
+        }
+
+        [TestMethod]
+        public void TestLogin()
+        {
+            _driver.Navigate().GoToUrl("http://localhost:3000/");
+
+            var loginNavButton = _driver.FindElement(By.Id("navLogin"));
+            loginNavButton.Click();
+
+            var usernameInput = _driver.FindElement(By.Id("username"));
+            usernameInput.SendKeys("Benjamin");
+
+            var passwordInput = _driver.FindElement(By.Id("password"));
+            passwordInput.SendKeys("kode3");
+
+            var loginButton = _driver.FindElement(By.Id("loginButton"));
+            loginButton.Click();
+        }
+
+        [TestMethod]
+        public void TestLoginFail()
+        {
+            WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
+            _driver.Navigate().GoToUrl("http://localhost:3000/");
+
+            var loginNavButton = _driver.FindElement(By.Id("navLogin"));
+            loginNavButton.Click();
+
+            var usernameInput = _driver.FindElement(By.Id("username"));
+            usernameInput.SendKeys("Benjamin");
+
+            var passwordInput = _driver.FindElement(By.Id("password"));
+            passwordInput.SendKeys("kode2");
+
+            var loginButton = _driver.FindElement(By.Id("loginButton"));
+            loginButton.Click();
+
+            var ErrorMessage = wait.Until(ExpectedConditions.ElementExists(By.Id("ErrorMessage")));
+
+            string Text = ErrorMessage.Text;
+            
+            Assert.AreEqual("Wrong username or password!", Text);
         }
 
     }

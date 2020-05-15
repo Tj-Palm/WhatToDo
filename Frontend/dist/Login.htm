@@ -67,9 +67,9 @@
                 </div>
                     <div class="text-center">
                         <button v-on:click="Login" class="btn btn-primary btn-md row"
-                            style="width: 50%; border-radius: 12px;">Login</button>
+                            style="width: 50%; border-radius: 12px;" id="LoginButton">Login</button>
                     </div>
-                    <span class="alert alert-danger row" v-if="showLoginAlert" role="alert"><strong> Wrong username or
+                    <span class="alert alert-danger row" v-if="showLoginAlert" role="alert" id="ErrorMessage"><strong> Wrong username or
                             password! </strong></span>
                 </div>
                 <div class="col"></div>

@@ -96,7 +96,7 @@ namespace RestApi.Controllers
                         addActivity = false;
                     }
                     
-                    if (activityParameter.TimeInterval >= activity.TimeInterval)
+                    if (activityParameter.TimeInterval < activity.TimeInterval)
                     {
                         addActivity = false;
                     }

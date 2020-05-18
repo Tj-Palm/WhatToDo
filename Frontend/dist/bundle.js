@@ -2046,6 +2046,17 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./src/Login.htm":
+/*!***********************!*\
+  !*** ./src/Login.htm ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "Login.htm";
+
+/***/ }),
+
 /***/ "./src/Random.htm":
 /*!************************!*\
   !*** ./src/Random.htm ***!
@@ -2083,16 +2094,13 @@ __webpack_require__.r(__webpack_exports__);
 var BaseUri = "http://whattodorest.azurewebsites.net/api";
 var AllActivitiesUri = "/activities";
 var RandomActivityUri = "/random";
+var Loginuri = "/Users/Login";
 var AllActivities;
 new Vue({
     el: "#App",
     data: {
         activities: [],
         errors: [],
-        //deleteId: 0,
-        //deleteMessage: "",
-        //formData: { name: "", environment: "", activityLevel: "", weather: "", timeInterval: 0 },
-        //addMessage: "",
         switch1: true,
         switch2: true,
         result: "",
@@ -2100,10 +2108,12 @@ new Vue({
         TimeInterval: 10,
         ShowEnvironmentButton: true,
         GetWeatherTimestamp: 0,
+        username: "",
+        password: "",
+        showLoginAlert: false,
     },
     created: function () {
         this.getAllActivities();
-        //this.getAllActivitesJSON()
     },
     methods: {
         getWeatherData: function () {
@@ -2132,20 +2142,9 @@ new Vue({
                 _this.activities = response.data;
             })
                 .catch(function (error) {
-                //this.message = error.message
                 alert(error.message); // https://www.w3schools.com/js/js_popup.asp
             });
         },
-        // getAllActivitesJSON() {
-        //     Axios.get(BaseUri + AllActivitiesUri)
-        //         .then((Response: AxiosResponse): void => {
-        //             console.log("Get books")
-        //             let data: IActivity[] = Response.data;
-        //             console.log(data)
-        //             let result: string = json2table100(data)
-        //             console.log(result)
-        //         })
-        // },
         RandomActivity: function () {
             var _this = this;
             var ActivityLevel;
@@ -2171,39 +2170,23 @@ new Vue({
                 console.log(Response.data);
             })
                 .catch(function (Error) {
-                _this.result = "Det er ingen Aktiviteter lige nu!!";
+                _this.result = "There is no activities to choose from";
             });
             this.activeresult = true;
             console.log(this.TimeInterval);
+        },
+        Login: function () {
+            var _this = this;
+            _node_modules_axios_index__WEBPACK_IMPORTED_MODULE_0___default.a.get(BaseUri + Loginuri + "?username=" + this.username + "&password=" + this.password)
+                .then(function (Response) {
+                var data = Response.data;
+                console.log(data);
+                window.location.href = "./index.htm";
+            })
+                .catch(function (Error) {
+                _this.showLoginAlert = true;
+            });
         }
-        // deleteActivity(deleteId: number) {
-        //     let uri: string = BaseUri + "activities" + "/" + deleteId
-        //     Axios.delete<void>(uri)
-        //         .then((response: AxiosResponse<void>) => {
-        //             this.deleteMessage = "Activity Deleted"
-        //             this.getAllActivities()
-        //         })
-        //         .catch((error: AxiosError) => {
-        //             //this.deleteMessage = error.message
-        //             alert(error.message)
-        //         })
-        // },
-        // addActivity() {
-        //     let name : HTMLInputElement = <HTMLInputElement> document.getElementById("inputname");
-        //     let type : HTMLInputElement = <HTMLInputElement> document.getElementById("inputtype");
-        //     let weather : HTMLInputElement = <HTMLInputElement> document.getElementById("inputweather");
-        //     let time : HTMLInputElement = <HTMLInputElement> document.getElementById("inputtime");
-        //     Axios.post<IActivity>(BaseUri + "activities", this.formData)
-        //         .then((response: AxiosResponse) => {
-        //             let message: string = "Activity Added"
-        //             this.addMessage = message
-        //             this.getAllActivities()
-        //         })
-        //         .catch((error: AxiosError) => {
-        //             // this.addMessage = error.message
-        //             alert(error.message)
-        //         })
-        // }
     }
 });
 
@@ -2222,16 +2205,17 @@ module.exports = __webpack_require__.p + "bundle.css";
 /***/ }),
 
 /***/ 0:
-/*!***************************************************************************************!*\
-  !*** multi ./src/index.htm ./src/Random.htm ./src/scss/styles.scss ./src/js/index.ts ***!
-  \***************************************************************************************/
+/*!*******************************************************************************************************!*\
+  !*** multi ./src/index.htm ./src/Random.htm ./src/scss/styles.scss ./src/js/index.ts ./src/Login.htm ***!
+  \*******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! ./src/index.htm */"./src/index.htm");
 __webpack_require__(/*! ./src/Random.htm */"./src/Random.htm");
 __webpack_require__(/*! ./src/scss/styles.scss */"./src/scss/styles.scss");
-module.exports = __webpack_require__(/*! ./src/js/index.ts */"./src/js/index.ts");
+__webpack_require__(/*! ./src/js/index.ts */"./src/js/index.ts");
+module.exports = __webpack_require__(/*! ./src/Login.htm */"./src/Login.htm");
 
 
 /***/ })

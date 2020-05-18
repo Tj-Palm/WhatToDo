@@ -14,9 +14,9 @@ namespace RestApi.Controllers
     [ApiController]
     public class ActivitiesController : ControllerBase
     {
-        private readonly ActivityContext _context;
+        private readonly DBContext _context;
 
-        public ActivitiesController(ActivityContext context)
+        public ActivitiesController(DBContext context)
         {
             _context = context;
             AddActivities();
@@ -43,15 +43,10 @@ namespace RestApi.Controllers
                 await _context.SaveChangesAsync();
                 _context.ActivityItems.Add(new Activity("Washing clothes", 60, "Work", "Indoor"));
                 await _context.SaveChangesAsync();
+                
             }
 
         }
-
-        private async void UserToLogin()
-        {
-            _context.Users.Add(new User())
-        }
-
 
         // GET: api/Activities
         [HttpGet]

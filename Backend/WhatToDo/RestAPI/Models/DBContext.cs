@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace RestApi.Models
 {
-    public class ActivityContext : DbContext
+    public class DBContext : DbContext
     {
-        public ActivityContext(DbContextOptions<ActivityContext> options)
+        public DBContext(DbContextOptions<DBContext> options)
             : base(options)
         {
         }

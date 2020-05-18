@@ -28,7 +28,7 @@ namespace RestApi
         public void ConfigureServices(IServiceCollection services)
         {
             
-            services.AddDbContext<DBContext>(opt =>
+            services.AddDbContext<InMemoryDbContext>(opt =>
              opt.UseInMemoryDatabase("ActivityList"));
 
             services.AddControllers();

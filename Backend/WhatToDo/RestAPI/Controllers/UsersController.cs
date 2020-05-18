@@ -13,9 +13,9 @@ namespace RestApi.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly DBContext _context;
+        private readonly InMemoryDbContext _context;
 
-        public UsersController(DBContext context)
+        public UsersController(InMemoryDbContext context)
         {
             _context = context;
             AddUsers();

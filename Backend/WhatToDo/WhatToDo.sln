@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WhatToDo", "WhatToDo\WhatTo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestBackendTest", "RestBackendTest\RestBackendTest.csproj", "{B34B0EEF-6499-4ADA-8E13-181C47F1CE90}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestApi", "RestApi\RestApi.csproj", "{A542F62A-B2CE-42A8-9318-2943F6E2E2B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestApi", "RestApi\RestApi.csproj", "{A542F62A-B2CE-42A8-9318-2943F6E2E2B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleniumTest", "SeleniumTest\SeleniumTest.csproj", "{85ACB3F4-5E4F-4ADE-A9A6-E5A7F69C319A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeleniumTest", "SeleniumTest\SeleniumTest.csproj", "{85ACB3F4-5E4F-4ADE-A9A6-E5A7F69C319A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sensor", "Sensor\Sensor.csproj", "{56D67271-32A9-4090-8AFC-8762EFB546A8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{85ACB3F4-5E4F-4ADE-A9A6-E5A7F69C319A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{85ACB3F4-5E4F-4ADE-A9A6-E5A7F69C319A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{85ACB3F4-5E4F-4ADE-A9A6-E5A7F69C319A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56D67271-32A9-4090-8AFC-8762EFB546A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56D67271-32A9-4090-8AFC-8762EFB546A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56D67271-32A9-4090-8AFC-8762EFB546A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56D67271-32A9-4090-8AFC-8762EFB546A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

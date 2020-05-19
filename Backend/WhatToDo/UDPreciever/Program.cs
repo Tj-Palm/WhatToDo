@@ -6,6 +6,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading;
+using System.Threading.Channels;
 using WhatToDo;
 
 namespace UDPreciever
@@ -18,7 +19,7 @@ namespace UDPreciever
 
             //Creates a UdpClient for reading incoming data.
 
-            UdpClient udpReceiver = new UdpClient(80);
+            UdpClient udpReceiver = new UdpClient(1111);
 
             //Creates an IPEndPoint to record the IP Address and port number of the sender.
             //This IPEndPoint will allow you to read datagrams sent from a specific ip-source on port 80
@@ -29,7 +30,7 @@ namespace UDPreciever
 
             //BROADCASTING RECEIVER
             //This IPEndPoint will allow you to read datagrams sent from any ip-source on port 80
-            IPEndPoint RemoteIpEndPoint = new IPEndPoint(IPAddress.Any, 80);
+            IPEndPoint RemoteIpEndPoint = new IPEndPoint(IPAddress.Any, 2222);
 
             //IPEndPoint object will allow us to read datagrams sent from any source.
             //IPEndPoint RemoteIpEndPoint = new IPEndPoint(IPAddress.Any, 0);
@@ -44,22 +45,21 @@ namespace UDPreciever
 
                     string receivedData = Encoding.ASCII.GetString(receiveBytes);
 
+                    Console.WriteLine(receivedData);
+
                     string[] splitreceived = receivedData.Split(" ");
 
 
-                    SensorData sensordataobject = new SensorData(){GrassLengt = Int32.Parse(splitreceived[0]), Time = DateTime.Parse(splitreceived[1]};
+                    SensorData sensordataobject = new SensorData(){GrassLengt = Int32.Parse(splitreceived[2]), Time = DateTime.Parse(splitreceived[0])};
 
-                    var json = JsonConvert.SerializeObject(sensordataobject);
-                    var data = new StringContent(json, Encoding.UTF8, "application/json");
+                    //var json = JsonConvert.SerializeObject(sensordataobject);
+                    //var data = new StringContent(json, Encoding.UTF8, "application/json");
 
-                    using HttpClient httpclient = new HttpClient();
-                    httpclient.PostAsync("", data);
+                    //Console.WriteLine(data);
 
-                    Console.WriteLine("Sender: " + receivedData.ToString());
-                    Console.WriteLine("This message was sent from " +
-                                      RemoteIpEndPoint.Address.ToString() +
-                                      " on their port number " +
-                                      RemoteIpEndPoint.Port.ToString());
+                    //using HttpClient httpclient = new HttpClient();
+                    //httpclient.PostAsync("", data);
+
                     Thread.Sleep(200);
                 }
             }

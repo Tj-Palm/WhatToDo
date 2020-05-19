@@ -16,7 +16,7 @@ namespace Sensor
             Random rvalue = new Random();
             Measurement measure;
 
-            UdpClient udpSender = new UdpClient(0);
+            UdpClient udpSender = new UdpClient(2222);
             udpSender.EnableBroadcast = true;
             IPEndPoint endPoint = new IPEndPoint(IPAddress.Broadcast, 1111);
 

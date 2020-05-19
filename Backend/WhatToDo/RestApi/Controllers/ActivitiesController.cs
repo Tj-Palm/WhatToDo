@@ -43,7 +43,13 @@ namespace RestApi.Controllers
                 await _context.SaveChangesAsync();
                 _context.ActivityItems.Add(new Activity("Washing clothes", 60, "Work", "Indoor"));
                 await _context.SaveChangesAsync();
-                
+
+            }
+            if (_context.Sensordatas.Count() == 0)
+            {
+                _context.Sensordatas.Add(new SensorData()
+                    { GrassLengt = 5, Id = 1, Time = new DateTime(2020, 1, 12, 14, 30, 57) });
+                await _context.SaveChangesAsync();
             }
 
         }
@@ -78,32 +84,46 @@ namespace RestApi.Controllers
             var activities = await GetActivityItems();
             List<Activity> activitesFromParameter = new List<Activity>();
 
+            var sensordata = _context.Sensordatas.LastAsync();
+
+            if (sensordata.Result.GrassLengt > 50 && activityParameter.Environment == "Outdoor")
+            {
+                var Grassactivity = activities.Value.First(a => a.Name == "Lawn moving");
+                if (Grassactivity != null)
+                {
+                    return Grassactivity;
+                }
+
+            }
+
             if (activityParameter != null)
             {
                 foreach (var activity in activities.Value)
                 {
 
-                    bool addActivity = true;
 
+
+                    bool addActivity = true;
 
                     if (activityParameter.ActivityLevel != activity.ActivityLevel)
                     {
                         addActivity = false;
                     }
 
-                    if (activityParameter.Environment != activity.Environment ) 
+                    if (activityParameter.Environment != activity.Environment)
                     {
                         addActivity = false;
                     }
-                    
+
                     if (activityParameter.TimeInterval < activity.TimeInterval)
                     {
                         addActivity = false;
                     }
+
                     if (addActivity)
                     {
                         activitesFromParameter.Add(activity);
-                        
+
                     }
                 }
             }

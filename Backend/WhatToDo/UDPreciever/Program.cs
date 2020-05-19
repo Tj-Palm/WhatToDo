@@ -49,16 +49,15 @@ namespace UDPreciever
 
                     string[] splitreceived = receivedData.Split(" ");
 
+                    var date = DateTime.Parse(splitreceived[0] + " " + splitreceived[1]);
 
-                    SensorData sensordataobject = new SensorData(){GrassLengt = Int32.Parse(splitreceived[2]), Time = DateTime.Parse(splitreceived[0])};
+                    SensorData sensordataobject = new SensorData(){GrassLengt = Int32.Parse(splitreceived[2]), Time = date};
 
-                    //var json = JsonConvert.SerializeObject(sensordataobject);
-                    //var data = new StringContent(json, Encoding.UTF8, "application/json");
+                    var json = JsonConvert.SerializeObject(sensordataobject);
+                    var data = new StringContent(json, Encoding.UTF8, "application/json");
 
-                    //Console.WriteLine(data);
-
-                    //using HttpClient httpclient = new HttpClient();
-                    //httpclient.PostAsync("", data);
+                    using HttpClient httpclient = new HttpClient();
+                    httpclient.PostAsync("http://localhost:57505/api/Sensordata", data);
 
                     Thread.Sleep(200);
                 }

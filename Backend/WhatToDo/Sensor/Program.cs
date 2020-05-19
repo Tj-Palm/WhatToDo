@@ -42,7 +42,7 @@ namespace Sensor
                     Console.WriteLine("sending:" + measure.ToString());
                     udpSender.Send(sendBytes, sendBytes.Length, endPoint);
                     //Thread.Sleep(10000);
-                    Thread.Sleep(100);
+                    Thread.Sleep(1000);
                 }
                 catch (Exception e)
                 {

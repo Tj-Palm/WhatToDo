@@ -9,8 +9,10 @@ namespace Sensor
 {
     class Program
     {
+
         static void Main(string[] args)
         {
+
             Console.WriteLine("Hello World press enter to start prepare sending environment!");
             Console.ReadLine();
             Random rvalue = new Random();
@@ -23,17 +25,24 @@ namespace Sensor
             Console.WriteLine("ready to start press enter again");
             Console.ReadLine();
 
+            int grassLength = 0;
+
             while (true)
             {
-                measure = new Measurement(DateTime.Now,rvalue.Next(10));
+                if(grassLength < 200)
+                { grassLength = grassLength + rvalue.Next(0, 2);}
 
-                byte[] sendBytes = Encoding.ASCII.GetBytes(measure.ToString());
+
+                measure = new Measurement(DateTime.Now, grassLength);
+
+                byte[] sendBytes = Encoding.ASCII.GetBytes(s: measure.ToString());
 
                 try
                 {
-                    Console.WriteLine("sending :" + measure.ToString());
+                    Console.WriteLine("sending:" + measure.ToString());
                     udpSender.Send(sendBytes, sendBytes.Length, endPoint);
-                    Thread.Sleep(10000);
+                    //Thread.Sleep(10000);
+                    Thread.Sleep(100);
                 }
                 catch (Exception e)
                 {

@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WhatToDo", "WhatToDo\WhatTo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestBackendTest", "RestBackendTest\RestBackendTest.csproj", "{B34B0EEF-6499-4ADA-8E13-181C47F1CE90}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestApi", "RestApi\RestApi.csproj", "{A542F62A-B2CE-42A8-9318-2943F6E2E2B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestApi", "RestApi\RestApi.csproj", "{A542F62A-B2CE-42A8-9318-2943F6E2E2B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleniumTest", "SeleniumTest\SeleniumTest.csproj", "{85ACB3F4-5E4F-4ADE-A9A6-E5A7F69C319A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeleniumTest", "SeleniumTest\SeleniumTest.csproj", "{85ACB3F4-5E4F-4ADE-A9A6-E5A7F69C319A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using RestApi.Models;
 
 namespace RestApi.Controllers
@@ -13,12 +14,12 @@ namespace RestApi.Controllers
     [ApiController]
     public class ActivitiesController : ControllerBase
     {
-        private readonly ActivityContext _context;
+        private readonly DBContext _context;
 
-        public ActivitiesController(ActivityContext context)
+        public ActivitiesController(DBContext context)
         {
             _context = context;
-          AddActivities();
+            AddActivities();
 
         }
 
@@ -26,18 +27,26 @@ namespace RestApi.Controllers
         {
             if (_context.ActivityItems.Count() == 0)
             {
-                _context.ActivityItems.Add(new Activity("Lawn moving", 30, "Spare time", "Outdoor"));
+                _context.ActivityItems.Add(new Activity("Lawn moving", 40, "Work", "Outdoor"));
                 await _context.SaveChangesAsync();
-                _context.ActivityItems.Add(new Activity("Watering flowers", 15, "Spare time", "Outdoor"));
+                _context.ActivityItems.Add(new Activity("Read a book", 60, "SpareTime", "Indoor"));
                 await _context.SaveChangesAsync();
-                _context.ActivityItems.Add(new Activity("Watch TV", 45, "Spare time", "Indoor"));
+                _context.ActivityItems.Add(new Activity("Enjoy the sun", 40, "SpareTime", "Outdoor"));
                 await _context.SaveChangesAsync();
-                _context.ActivityItems.Add(new Activity("Washing clothes", 180, "Work", "Indoor"));
+                _context.ActivityItems.Add(new Activity("Put clothes in closet", 20, "Work", "Indoor"));
                 await _context.SaveChangesAsync();
+                _context.ActivityItems.Add(new Activity("Dry dust", 20, "Work", "Indoor"));
+                await _context.SaveChangesAsync();
+                _context.ActivityItems.Add(new Activity("Watering flowers", 10, "SpareTime", "Outdoor"));
+                await _context.SaveChangesAsync();
+                _context.ActivityItems.Add(new Activity("Watch TV", 40, "SpareTime", "Indoor"));
+                await _context.SaveChangesAsync();
+                _context.ActivityItems.Add(new Activity("Washing clothes", 60, "Work", "Indoor"));
+                await _context.SaveChangesAsync();
+                
             }
 
         }
-
 
         // GET: api/Activities
         [HttpGet]
@@ -58,6 +67,55 @@ namespace RestApi.Controllers
             }
 
             return activity;
+        }
+
+        // GET: api/Activities/random
+        [HttpGet]
+        [Route("random")]
+        public async Task<ActionResult<Activity>> GetRandomActivityAsync(
+            [FromQuery] ActivityParameter activityParameter)
+        {
+            var activities = await GetActivityItems();
+            List<Activity> activitesFromParameter = new List<Activity>();
+
+            if (activityParameter != null)
+            {
+                foreach (var activity in activities.Value)
+                {
+
+                    bool addActivity = true;
+
+
+                    if (activityParameter.ActivityLevel != activity.ActivityLevel)
+                    {
+                        addActivity = false;
+                    }
+
+                    if (activityParameter.Environment != activity.Environment ) 
+                    {
+                        addActivity = false;
+                    }
+                    
+                    if (activityParameter.TimeInterval < activity.TimeInterval)
+                    {
+                        addActivity = false;
+                    }
+                    if (addActivity)
+                    {
+                        activitesFromParameter.Add(activity);
+                        
+                    }
+                }
+            }
+
+            if (activitesFromParameter.Count == 0)
+            {
+                return NotFound();
+            }
+
+            var r = new Random();
+            var inx = r.Next(0, activitesFromParameter.Count - 1);
+            return activitesFromParameter[inx];
         }
 
         // PUT: api/Activities/5
@@ -101,7 +159,7 @@ namespace RestApi.Controllers
             _context.ActivityItems.Add(activity);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetActivity", new { id = activity.id }, activity);
+            return CreatedAtAction("GetActivity", new {id = activity.id}, activity);
         }
 
         // DELETE: api/Activities/5

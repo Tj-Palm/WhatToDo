@@ -2,7 +2,7 @@
   color: #0091aa; }
 
 h2, h1 {
-  color: black; }
+  color: #FFB133; }
 
 thead {
   background-color: #0072cc;
@@ -16,3 +16,32 @@ tbody > tr:nth-child(even) {
 
 tbody > tr:nth-child(odd) {
   background-color: lightsteelblue; }
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 3.0s; }
+
+.fade-enter, .fade-leave-to {
+  opacity: 0; }
+
+.row {
+  margin-top: 1.5rem; }
+
+.top {
+  margin-top: 0rem; }
+
+.DivAlign {
+  text-align: center; }
+
+#findRandomActivity {
+  border-radius: 12px;
+  width: 50%;
+  height: 110%; }
+
+#right-items {
+  text-align: right; }
+
+#margin-top {
+  margin-top: 10rem; }
+
+#margin-top-list {
+  margin-top: 5rem; }

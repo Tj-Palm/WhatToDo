@@ -58,8 +58,6 @@ namespace UDPreciever
 
                     using HttpClient httpclient = new HttpClient();
                     httpclient.PostAsync("http://localhost:57505/api/Sensordata", data);
-
-                    Thread.Sleep(200);
                 }
             }
             catch (Exception e)

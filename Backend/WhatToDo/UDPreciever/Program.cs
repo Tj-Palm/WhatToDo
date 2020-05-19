@@ -47,7 +47,7 @@ namespace UDPreciever
                     string[] splitreceived = receivedData.Split(" ");
 
 
-                    SensorData sensordataobject = new SensorData(){GrassLengt = Int32.Parse(splitreceived[0]), Time = DateTime.Parse(splitreceived[1]};
+                    SensorData sensordataobject = new SensorData(){GrassLengt = Int32.Parse(splitreceived[0]), Time = DateTime.Parse(splitreceived[1])};
 
                     var json = JsonConvert.SerializeObject(sensordataobject);
                     var data = new StringContent(json, Encoding.UTF8, "application/json");

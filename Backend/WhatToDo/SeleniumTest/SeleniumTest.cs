@@ -10,7 +10,7 @@ namespace SeleniumTest
     [TestClass]
     public class SeleniumTypescript
     {
-        private static string driverFolder = "C:\\Users\\Daniel\\Desktop\\SeleniumDrivers";
+        private static string driverFolder = "C:\\SeleniumDrivers";
         private static IWebDriver _driver;
 
         [ClassInitialize]

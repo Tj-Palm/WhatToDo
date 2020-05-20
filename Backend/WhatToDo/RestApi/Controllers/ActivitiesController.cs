@@ -14,9 +14,9 @@ namespace RestApi.Controllers
     [ApiController]
     public class ActivitiesController : ControllerBase
     {
-        private readonly DBContext _context;
+        private readonly InMemoryDbContext _context;
 
-        public ActivitiesController(DBContext context)
+        public ActivitiesController(InMemoryDbContext context)
         {
             _context = context;
             AddActivities();
